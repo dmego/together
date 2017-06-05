@@ -1,0 +1,17 @@
+
+  <view class="container">
+  <!--logo-->
+  <image class="logo" src="../../images/logo.png" animation="{{animationData}}"></image>
+  <!--form登录表单-->
+  <view class="form">
+     <input placeholder="请输入用户名" bindchange="bindChange" id="name"/>
+     <input placeholder="请输入密码" type="password" bindchange="bindChange" id="password"/>
+      <view>
+        <button type="primary" size="{{button.primarySize}}" plain="{{button.plain}}" bindtap="submit">GO</button>
+      </view>
+  </view>
+  <!--modal框-->
+  <modal class="modal" hidden="{{modal.modalHidden}}" no-cancel bindconfirm="modalClose">
+      <view> {{modal.modalContent}} </view>
+    </modal>
+</view>

@@ -1,0 +1,17 @@
+<view class="container">
+    <view class="my-info">
+        <image class="my-img" src="{{userInfo.avatarUrl}}"></image>
+        <view class="my-name">{{userInfo.nickName}}</view>
+        <view class="my-identification">微信用户</view>
+    </view>
+    <view class="order-info">
+        <view class="info-icon order-start no-now">我发起的一起</view>
+        <view class="info-icon order-participate no-now">我参与的一起</view>
+       
+    </view>
+    <view class="other-info">
+        <view class="info-icon other-invite no-now">邀请好友</view>
+        <view class="info-icon other-use no-now">使用须知</view>
+        <view class="info-icon other-about no-now" bindtap="jumpToYN">关于</view>
+    </view>
+</view>

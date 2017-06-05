@@ -1,0 +1,78 @@
+<import src="../../libs/wetoast/wetoast.wxml"/>
+<form bindsubmit="formSubmit">
+  <view class="page__bd">
+      <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">主题<span class='red-star'>*</span></view>
+              </view>
+              <view class="weui-cell__bd">
+                   <input bindinput="titleEventFunc" id="title" class="weui-input" name="title" value="{{title}}" placeholder="和我一起做什么" value="{{discount.content.summary || ''}}"/>
+               </view>
+          </view>
+
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">日期<span class='red-star'>*</span></view>
+              </view>
+              <view class="weui-cell__bd">
+                  <picker class="weui-input" id="date" name="date" mode="date" value="{{date}}" start="2017-05-01" end="2020-09-01" bindchange="bindDateChange">{{date}}</picker> 
+               </view>
+          </view>
+
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">时间<span class='red-star'>*</span></view>
+              </view>
+              <view class="weui-cell__bd">
+                   <picker  class="weui-input" id="time" name="time" mode="time" value="{{time}}" bindchange="bindTimeChange">{{time}}</picker>
+               </view>
+          </view>
+
+          <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">地点<span class='red-star'>*</span></view>
+              </view>
+              <view class="weui-cell__bd">
+                    <text  class="weui-input"  id="positionData" bindtap="positionChange" value="{{positionData}}">{{positionData}}</text>
+               </view>
+          </view>
+
+        </view>
+
+        <view class="weui-cells__title">说明</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" bindinput="titleEventFunc" id="title" id="content" name="content" value="{{content}}" placeholder="详细说明信息，最多200字" style="height: 3.3em" maxlength="200" value="{{discount.content.detail || ''}}"/>
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+        </view> 
+
+        <view class="weui-cells__title">添加微信二维码<span class='red-star'>*</span></view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <image wx:if="{{ QRCode !== '' }}" src="{{ QRCode }}" class="image-item"></image>
+                    <view wx:if="{{ QRCode === ''}}" id="addQRCode"  class="image-add-button form-common-style image-item" bindtap="chooseQRCode"></view>
+                </view>
+            </view>
+        </view>
+
+         <view class="weui-cells__title">添加照片信息<span class='red-star'>*</span></view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <image wx:for="{{ pictures }}" src="{{ item }}" wx:key="{{ index }}" class="image-item"></image>
+                    <view wx:if="{{pictures.length < 3}}" id="addImageButton" class="image-add-button form-common-style image-item" bindtap="chooseImage"></view>
+                </view>
+            </view>
+        </view>
+    </view>        
+    <view>
+        <button formType="submit" type="primary" class="submit form-common-style"> 立即发布 </button>
+    </view>
+</form>
+<!-- wetoast -->
+<template is="wetoast" data="{{...__wetoast__}}"/>

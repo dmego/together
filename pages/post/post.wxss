@@ -1,0 +1,112 @@
+.post-container {
+    background-color: #fff;
+    padding: 20rpx;
+    font: 12px/150% arial,\5FAE\8F6F\96C5\9ED1,\5b8b\4f53;
+}
+
+.post-container .label {
+    margin-left: 10rpx;
+    font-weight: bold;
+}
+
+.form-common-style {
+    box-sizing: border-box;
+    width: 690rpx;
+
+    /*padding: 10rpx;*/
+    margin: 10rpx 10rpx 10rpx 10rpx;
+
+    border: solid 2rpx #999;
+    border-radius: 10rpx;
+    box-shadow: 0 0 2rpx #888888;
+
+}
+
+.post-container .image-add-button {
+    line-height: 230rpx;
+    text-align: center;
+    font-size: 100rpx;
+    color: #999;
+}
+
+.images-container,
+.QRCode-container {
+    overflow: hidden;
+}
+
+.image-item {
+    float: left;
+    width: 230rpx;
+    height: 230rpx;
+}
+
+.post-container .submit {
+    padding: 5rpx;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.my_wetoast_title {
+    font-size: 40rpx;
+    font-family: arial,\5FAE\8F6F\96C5\9ED1,\5b8b\4f53;
+}
+
+/* 啊师傅 */
+page{
+    background-color: #F8F8F8;
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+.page__hd {
+    padding: 40px;
+}
+.page__bd {
+    padding-bottom: 40px;
+}
+.page__bd_spacing {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.page__ft{
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.page__title {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.page__desc {
+    margin-top: 5px;
+    color: #888888;
+    text-align: left;
+    font-size: 14px;
+}
+.weui-form-preview__content {
+  float: left;
+  min-width: 4em;
+  color: #999999;
+  text-align: justify;
+  text-align-last: left;
+  font-size: 12px
+}
+.uploadbox{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+.uploadimg{
+  margin-left:10px;
+}
+.uploadvo{
+  margin-right: 10px;
+}
+
+.red-star {
+    color: red;
+    font-size: 34rpx;
+}

@@ -1,0 +1,26 @@
+<view class="container">
+    <view class="privilege-title">
+        <image class="privilege-title-image" src="{{ discount.background_url }}"></image>
+    </view>
+    <view class="privilege-info">
+        <view class="info-summary">{{discount.content.summary}}</view>
+        <view  wx:for="{{discount.content.detail}}" wx:key="index">
+        <view class="info-detail">{{item}}</view>
+        </view>
+    </view>
+    <view class="orders-info" wx:if="{{ orders.length > 0 }}">
+        <view class="orders-info-title">已发起的活动</view>
+        <view wx:if="{{orders.length<=0}}" class="no-orders">暂无活动哦~赶快立即发起抢占沙发！</view>
+        <view class="orders-info-item"  wx:for="{{orders}}" wx:key="id">
+            <image class="order-item-img" src="{{item.author.avatarUrl}}"></image>
+            <view class="order-item-name">{{item.author.nickName}}</view>
+            <!--<view class="order-item-status">{{item.status}}</view>-->
+            <!--<view  wx:if="{{item.todo == '已完成'}}" class="order-item-look undo-look">{{item.todo}}</view>-->
+            <view  class="order-item-look" bindtap="seeOrder" data-id="{{item.id}}">查看</view>
+        </view>
+    </view>
+    <view class="privilege-join">
+        <view class="privilege-praise">{{discount.praise}}人</view>
+        <view class="join" bindtap="makeOrder">立即发起</view>
+    </view>
+</view>

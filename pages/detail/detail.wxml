@@ -1,0 +1,63 @@
+
+<view class="container">
+    <view bindtap="" class="order-detail" data-id="{{ order.id }}">
+        <view class="author">
+            <image class="author-avatar" src="{{ order.author.avatarUrl}}" background-size="cover"></image>
+            <view class="author-info">
+                <view class="author-name">{{ order.author.nickName}}</view>
+                <view class="post-time">{{ order.formatDate}}</view>
+            </view>
+        </view>
+        <view class="order-container">
+            <view class="order-title">
+                {{ order.title }}
+            </view>
+            <view class="order-content">
+                 活动内容：
+                {{ order.content }}
+            </view>
+            <view class="order-description">
+                活动时间:
+                {{ order.description }}
+            </view>
+            
+            <view class="piuctures-container">
+            <image class="content-picture" wx:for="{{ order.pictures }}" wx:key="{{ index }}" src="{{ item }}" background-size="cover"></image>            
+            </view>
+            <view class="order-description" wx:if="{{order.url != ''}}">
+                地址：
+                <view>{{ order.url }}</view>
+            </view>
+        </view>
+        
+        <view class="order-comments" wx:if="{{ order.comments && order.comments.length > 0 }}">
+            评论
+            <view class="order-comment" wx:for="{{ order.comments }}" wx:key="{{ index }}">
+                <view class="author">
+                    <image class="author-avatar" src="{{ item.author.avatarUrl}}" background-size="cover"></image>
+                    <view class="author-info">
+                        <view class="author-name">{{ item.author.nickName}}</view>
+                        <view class="post-time">{{ item.formatDate }}</view>
+                    </view>
+                </view>
+                <view class="comment-str">
+                    {{ item.commentStr }}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tool-bar">
+        <form bindsubmit="commentSubmit" data-objId="{{ order.id }}" class="comment-tool">
+            <input bindinput="commentInput" placeholder="输入评论" class="comment-input" />
+            <button type="primary" form-type="submit" class="comment-submit"> 评论 </button>
+        </form>
+        <view class="join-tool" bindtap="showQRCode" data-qrcode = "{{ order.QRCode }}">立即加入</view>
+    </view>
+
+    <view wx-if="{{ QRCodeShowFlag }}" class="QRCode-container" id="QRCode-container" catchtap="hideQRCode">
+        <view class="QRCode-box" id="QRCode-box">
+        长按识别二维码：
+        <image src="{{ QRCodeShow }}" class="QRCde-show"></image>
+        </view>
+    </view>
+</view>
