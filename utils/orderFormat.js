@@ -1,7 +1,5 @@
 var util = require('./util.js');
-
 /**
- *
  * @param obj (leanCloud查询返回对象)
  * @returns formatObj
  */
@@ -13,7 +11,7 @@ function orderFormate(obj) {
     retObj.content = obj.get('content');
     retObj.time = obj.get('time');
     retObj.date = obj.get('date');
-    retObj.positionData = obj.get(' positionData');//位置
+    retObj.positiondata = obj.get('positiondata');//位置
     retObj.pictures = obj.get('pictures');
     retObj.comments = obj.get('comments');
     retObj.updatedAt = obj.updatedAt;

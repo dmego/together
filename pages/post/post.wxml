@@ -16,7 +16,7 @@
                   <view class="weui-label">日期<span class='red-star'>*</span></view>
               </view>
               <view class="weui-cell__bd">
-                  <picker class="weui-input" id="date" name="date" mode="date" value="{{date}}" start="2017-05-01" end="2020-09-01" bindchange="bindDateChange">{{date}}</picker> 
+                  <picker  class="weui-input" id="date" name="date" mode="date" value="{{date}}" start="2017-05-01" end="2020-09-01" bindchange="bindDateChange">{{date}}</picker> 
                </view>
           </view>
 
@@ -34,7 +34,7 @@
                   <view class="weui-label">地点<span class='red-star'>*</span></view>
               </view>
               <view class="weui-cell__bd">
-                    <text  class="weui-input"  id="positionData" bindtap="positionChange" value="{{positionData}}">{{positionData}}</text>
+                    <text  class="weui-input"  id="positiondata" bindtap="positionChange" value="{{positiondata}}">{{positiondata}}</text>
                </view>
           </view>
 
@@ -44,7 +44,7 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" bindinput="titleEventFunc" id="title" id="content" name="content" value="{{content}}" placeholder="详细说明信息，最多200字" style="height: 3.3em" maxlength="200" value="{{discount.content.detail || ''}}"/>
+                    <textarea class="weui-textarea" bindblur="contentEventFunc" id="title" id="content" name="content" value="{{content}}" placeholder="详细说明信息，最多200字" style="height: 3.3em" maxlength="200" value="{{discount.content.detail || ''}}"/>
                     <view class="weui-textarea-counter">0/200</view>
                 </view>
             </view>
@@ -55,7 +55,9 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">
                     <image wx:if="{{ QRCode !== '' }}" src="{{ QRCode }}" class="image-item"></image>
-                    <view wx:if="{{ QRCode === ''}}" id="addQRCode"  class="image-add-button form-common-style image-item" bindtap="chooseQRCode"></view>
+                    <view  wx:if="{{ QRCode === ''}}" id="addQRCode" catchtap="chooseQRCode" data-category="album">
+            <image class="image-add-button form-common-style image-item" src="/images/icon/wx_app_scan_code.png"></image>
+          </view>
                 </view>
             </view>
         </view>
@@ -65,13 +67,17 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">
                     <image wx:for="{{ pictures }}" src="{{ item }}" wx:key="{{ index }}" class="image-item"></image>
-                    <view wx:if="{{pictures.length < 3}}" id="addImageButton" class="image-add-button form-common-style image-item" bindtap="chooseImage"></view>
+                    <view wx:if="{{pictures.length < 3}}" id="addImageButton"  bindtap="chooseImage">
+                    <image class="image-add-button form-common-style image-item" src="/images/icon/wx_app_upload_image.png"></image>
+                    
+                    </view>
                 </view>
             </view>
         </view>
     </view>        
-    <view>
-        <button formType="submit" type="primary" class="submit form-common-style"> 立即发布 </button>
+    <view >
+        <button formType="submit" type="primary" class="submit form-common-style"> 发布 </button>
+        <button formType="reset" type="primary" class="submit form-common-style"> 重置 </button>
     </view>
 </form>
 <!-- wetoast -->

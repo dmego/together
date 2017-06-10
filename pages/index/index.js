@@ -37,12 +37,8 @@ Page({
     QRCodeShow: '',
     QRCodeShowFlag: false
   },
-  //事件处理函数
-  navToPost: function() {
-    wx.navigateTo({
-      url: '../post/post'
-    });
-  },
+ 
+ 
   onLoad: function (e) {
     var that = this
     //调用应用实例的方法获取全局数据
@@ -63,6 +59,7 @@ Page({
       url: '../detail/detail?objId=' + objId 
     });
   },
+
   manageOrder:function(e){
     var that =this
     that.data.manage.display = !that.data.manage.display;

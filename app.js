@@ -7,8 +7,8 @@ App({
   WeToast,
   onLaunch: function () {
     AV.init({ 
-      appId: 'VoNtPLpE6fJpwiBkA0sBSntE-gzGzoHsz',
-      appKey: 'kvpVJ4ERc7FzK4aOVhWfnPuM',  
+      appId: 'HPmTv8K4vQ1QmiQFIkRNwTPV-gzGzoHsz',
+      appKey: 'nQMHFdk589kanFTDMd23xK55',  
       });
 
     //调用API从本地缓存中获取数据

@@ -15,7 +15,7 @@ Page({
       content: '',
       date: '2016-12-20',
       time: '11:19',
-      positionData: '点击选择位置',
+      positiondata: '点击选择位置',
       discountId: ''
   },
   onLoad:function(options){
@@ -37,18 +37,14 @@ Page({
         let discount = new AV.Query('discount');   
         discount.equalTo('objectId', that.data.discountId);
         discount.find().then(function (results) {
-            
-            detail.content = results[0].attributes.content;
-            detail.disForm = results[0].attributes.disForm;
-            // detail.img = results[0].attributes.background_url;
-            pictures.push(results[0].get('background_url'));
-            
-            that.data.title = detail.content.summary;
-            that.data.content = detail.content.detail.join('');
-            that.data.date = detail.disForm;
-            that.data.time = detail.disForm;
-            // that.data.contentpictures = [detail.img];
-            that.setData({
+        detail.content = results[0].attributes.content;
+        detail.disForm = results[0].attributes.disForm;
+        pictures.push(results[0].get('background_url'));
+        that.data.title = detail.content.summary;
+        that.data.content = detail.content.detail.join('');
+        that.data.date = detail.disForm;
+        that.data.time = detail.disForm;
+        that.setData({
                 discount: detail,
                 pictures: pictures
             });
@@ -70,7 +66,6 @@ Page({
     // 页面关闭
   },
   titleEventFunc: function(e) {
-      
       if(e.detail && e.detail.value) {
           this.data.title = e.detail.value;
       }
@@ -80,20 +75,12 @@ Page({
           this.data.content = e.detail.value;
       }
   },
-  dateEventFunc: function(e) {
-      if(e.detail && e.detail.value) {
-        this.data.date = e.detail.value;
-      }
+
+  dateEventFunc: function(e) { 
   },
   timeEventFunc: function(e) {
-      if(e.detail && e.detail.value) {
-          this.data.time= e.detail.value;
-      }
   },
   positionDataEventFunc: function (e) {
-    if (e.detail && e.detail.value) {
-      this.data.positionData = e.detail.value;
-    }
   },
   
  //日期选择
@@ -101,19 +88,26 @@ Page({
     this.setData({
       date: e.detail.value
     })
+    if(e.detail && e.detail.value) {
+        this.data.date = e.detail.value;
+      }
+
   },
   //时间选择
   bindTimeChange: function(e) {
     this.setData({
       time: e.detail.value
     })
+    if (e.detail && e.detail.value) {
+      this.data.time = e.detail.value;
+    }
   },
   //位置选择
     positionSwitchChange: function(e){
     this.setData({
       position: e.detail.value,
     })
-    if(e.detail.value && this.data.positionData === '点击选择位置') {
+    if(e.detail.value && this.data.positiondata === '点击选择位置') {
       this.positionChoose();
     }
   },
@@ -125,8 +119,11 @@ Page({
     wx.chooseLocation({
       success: function(res){
         that.setData({
-          positionData:res.name || res.address
-        })        
+          positiondata:res.name || res.address
+        }) 
+        if (e.detail && e.detail.value) {
+          this.data.positiondata = e.detail.value;
+        }    
       },
       fail: function() {
         // fail
@@ -138,61 +135,31 @@ Page({
   },
 
   formSubmit: function(e) {
-      /*
-      if(this.data.title === '') {
-          this.wetoast.toast({
-            img: warnImg,
-            title: '标题不能为空',
-            titleClassName: 'my_wetoast_title'
-          });
-          return false;
-      }else if(this.data.content === ''){
-          this.wetoast.toast({
-            img: warnImg,
-            title: '内容不能为空',
-            titleClassName: 'my_wetoast_title'
-          });
-          return false;
-      }else if(this.data.QRCode === ''){
-           this.wetoast.toast({
-            img: warnImg,
-            title: '你的二维码未上传',
-            titleClassName: 'my_wetoast_title'
-          });
-          return false;
-      }else if(this.data.pictures.length === 0){
-            this.wetoast.toast({
-            img: warnImg,
-            title: '至少上传一张图片',
-            titleClassName: 'my_wetoast_title'
-          });
-          return false;
-      }*/
-     
-
-          var orderObj = AV.Object.extend('orders'),
-            order = new orderObj();
+  
+        var orderObj = AV.Object.extend('orders'),
+          order = new orderObj();
           order.set('title', this.data.title);
           order.set('content', this.data.content);
           order.set('date', this.data.date);
           order.set('time', this.data.time);
-          order.set(' positionData',this.data.positionData);
+          order.set('positiondata', this.data.positiondata);
           order.set('author', this.data.author);
           order.set('pictures', this.data.pictures);
           order.set('discountId', this.data.discountId);
           order.set('QRCode', this.data.QRCode);
 
-          order.save().then(function (order) {
-            // 成功保存之后，执行其他逻辑.
-            //wx.navigateTo({
-            // url: '../index/index'
-            //})
-            wx.navigateBack();
-          }, function (error) {
-            // 异常处理
-            console.log(error);
-          });
+          console.log(this.data.title + this.data.content + this.data.date + this.data.time + this.data.positiondata + this.data.author + this.data.pictures + this.data.discountId + this.data.QRCode);
 
+        order.save().then(function (order) {
+          // 成功保存之后，执行其他逻辑.
+          wx.switchTab({
+            url: "../index/index",
+          });
+          //wx.navigateBack();
+        }, function (error) {
+          // 异常处理
+          console.log(error);
+        });
   },  
   chooseQRCode: function() {
       //上传图片相关
@@ -205,10 +172,6 @@ Page({
               // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
               let tempFilePaths = res.tempFilePaths;
               tempFilePaths.forEach(function(url, index){
-                //   pictures.push(url);
-                //   that.setData({
-                //       pictures: pictures
-                //   });
                 let strRegex = "(.jpg|.png|.gif|.jpeg)$"; //用于验证图片扩展名的正则表达式
                 let re=new RegExp(strRegex);
                 if (re.test(url.toLowerCase())){
@@ -221,11 +184,9 @@ Page({
                         });
                         image.save().then(function(file) {
                             // 文件保存成功
-                            
                             that.setData({
                                 QRCode: file.url()
                             });
-                            
                         }, function(error) {
                             // 异常处理
                             console.error(error);
@@ -248,12 +209,7 @@ Page({
           success: function (res) {
               // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
               let tempFilePaths = res.tempFilePaths;
-              
               tempFilePaths.forEach(function(url, index){
-                //   pictures.push(url);
-                //   that.setData({
-                //       pictures: pictures
-                //   });
                 let strRegex = "(.jpg|.png|.gif|.jpeg)$"; //用于验证图片扩展名的正则表达式
                 let re=new RegExp(strRegex);
                 if (re.test(url.toLowerCase())){
@@ -266,7 +222,6 @@ Page({
                         });
                         image.save().then(function(file) {
                             // 文件保存成功
-                            
                             pictures.push(file.url());
                             that.setData({
                                 pictures: pictures

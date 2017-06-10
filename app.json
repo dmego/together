@@ -1,21 +1,24 @@
 {
   "pages":[
+    
+    "pages/login/login",
     "pages/index/index",
     "pages/detail/detail",
-    "pages/privilege-detail/privilege-detail",
-    "pages/post/post",    
-    "pages/privilege-list/privilege-list",
-    "pages/personal-information/personal-information",
+    "pages/mylaunch/mylaunch",
+    "pages/post/post",
+    "pages/album/album",
+    "pages/information/information",
+    "pages/message/message",
     "pages/logs/logs",
-    "pages/login/login",
-    "pages/res/aboutyn"
+    "pages/introduction/introduction",
+    "pages/aboutyn/aboutyn"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "backgroundColor": "#fff",
-    "navigationBarBackgroundColor": "#444",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#ebebeb",
     "navigationBarTitleText": "一起",
-    "navigationBarTextStyle":"white"
+    "backgroundColor": "#fff"
+
   },
   "tabBar": {
    "color": "#444",
@@ -30,12 +33,18 @@
      },
      {
       "pagePath": "pages/post/post",
-      "text": "发布",
+      "text": "发起",
       "iconPath": "images/22.png",
       "selectedIconPath": "images/2HL.png"
     },
     {
-      "pagePath":     "pages/personal-information/personal-information",
+      "pagePath": "pages/message/message",
+      "text": "通知",
+      "iconPath": "images/33.png",
+      "selectedIconPath": "images/3HL.png"
+    },
+    {
+      "pagePath": "pages/information/information",
       "text": "我的",
       "iconPath": "images/44.png",
       "selectedIconPath": "images/4HL.png"

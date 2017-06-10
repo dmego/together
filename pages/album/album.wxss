@@ -1,0 +1,73 @@
+.explain{
+    margin: 0;
+    font-family: "微软雅黑",arial,"arial narrow";
+    font-size: 28rpx;
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    padding: 0 5%;
+    background-color: #F4F6F7;
+    color: #1D1D1D;
+   }
+  .foot_box{
+    height: 40rpx;
+    margin-bottom: 5%;
+   }
+  .foot_box .xian{
+    display: inline-block;
+    height: 40px;
+    border-bottom: 2rpx solid #e0e0e0;
+    width:80% ;
+   }
+   image{
+    width: 675rpx;
+    height: 459rpx
+   }
+   p{
+    text-align: center;
+   }
+  .foot_box .ch{
+    width: 84%;
+   }
+  .foot_box .du{
+    width: 75%;
+   }
+   .move{
+    width: 90%;
+    padding: 5%;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+   }
+   .move image{
+    display: block;
+    float: left;
+   }
+   .move .image_one{
+    width: 11%;
+    margin-right: 2%;
+   }
+   .move .image_two{
+    width: 15%; 
+    position: absolute;
+    right: 5%;
+   }
+   .move .image_two image{
+    width: 100%;
+   }
+   
+   @media only screen and (max-width:360px )
+    {
+    
+      .foot_box .xian{
+        width: 76%;
+        }
+      .foot_box .ch{
+        width: 81%;
+        }
+      .foot_box .du{
+        width: 71%;
+        }
+   }

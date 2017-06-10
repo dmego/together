@@ -1,8 +1,5 @@
-<!--index.wxml-->
+
 <view class="container index-container">
-  <view class="location-info" bindtap="chooseCircle">
-    当前圈子：石家庄铁道大学
-  </view>
 
   <view class="order-item" wx:for="{{orders}}" wx:key="id" data-id="{{ item.id }}">
     <image class="author-avatar" src="{{ item.author.avatarUrl}}" background-size="cover"></image>
@@ -26,20 +23,6 @@
           {{ item.content }}
         </view>
       </view>
-      <view class="button">
-        <view class="button-item thumbs-up">赞</view>
-
-        <view class="button-item comment">评论</view>
-
-        <view class="button-item join" data-qrcode="{{ item.QRCode }}" catchtap="QRCodeTap">立即加入</view>
-      </view>
-    </view>
+    </view>    
   </view>
-  <view wx-if="{{ QRCodeShowFlag }}" class="QRCode-container" id="QRCode-container" catchtap="hideQRCode">
-    <view class="QRCode-box" id="QRCode-box" longtap="scanQR">
-      截图保存
-      <image src="{{ QRCodeShow }}" class="QRCde-show"></image>
-    </view>
-  </view>
-
 </view>

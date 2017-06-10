@@ -1,0 +1,52 @@
+<scroll-view scroll-y='true' class='service'>
+<view class="box">
+   <view class="tit">出发吧一起</view>
+   <view class="tit_s">
+    一.前言
+   </view>
+   <view class="cont">
+    <p>1.1 编写目的：</p>
+       <p>本手册是软件工程概论团队项目 《一起》的Alpha版使用说明，面向的对象群体为全校师生。s</p>
+   </view>
+   
+   <view class="cont">
+ <p>1.2项目背景:</p>
+ <p>本项目由《软件工程概论》课程需求创建，软件由SmartCoder团队开发维护</p>
+   </view>
+   <view class="cont">
+ <p>1.3参考资料:</p>
+     <p> a.微信小程序开发文档</p>
+     <p> b.微信小程序联盟网站上的Demo</p>
+   </view>
+   <view class="tit_s">
+    二.软件概述
+   </view>
+   <view class="cont">
+    <p> 2.1目标：</p >
+    <p> 本软件旨在解决当代大学生生活中的各种兴趣需求，让有相同爱好的人能够联系，然后一起。</p >
+   </view>
+   
+   <view class="cont">
+     <p>2.2功能：</p>
+     <p>本软件Beta办实现的主要功能有：用户的需求信息查看浏览;用户评论;用户发布信息;通知中心</p>
+   </view>
+   <view class="cont">
+ <p> 2.3 性能： </p>
+     <p> a.时间特性：本软件使用的后端服务器是LeanCloud提供的免费版后端服务支持，使用的是国内节点，请求响应时间非常快</p>
+     <p> b.灵活性：由于本软件由微信小程序开发，PC端运行环境必须在微信官方开发工具或者一些其他第三方开发平台上运行，移动端由于没有发布本软件，所以只能是开发者和体验者具有特权。</p>
+   </view>
+
+ <view class="tit_s">
+    三. 运行环境
+   </view>
+  <view class="cont">
+    <p> 3.1硬件：</p >
+    <p> 本软件为微信副产品，PC端开发版对硬件要求不高，在移动端要求即微信运行环境的硬件要求.</p >
+   </view>
+   
+   <view class="cont">
+     <p>3.2支持软件：</p>
+     <p>Android端、iOS端微信6.5.3版本以上</p>
+   </view>
+  </view>
+</scroll-view>

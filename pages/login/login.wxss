@@ -1,33 +1,39 @@
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 200rpx;
-  box-sizing: border-box;
-} 
+.container{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
 
-page {
-  background-color: #ffffff;
+.avatar{
+    width:200rpx;
+    height:200rpx;
+    margin-top:160rpx;
 }
-.logo{
-  width:200rpx;
-  height: 200rpx;
-  margin-bottom: 30rpx;
+
+.motto{
+    margin-top:100rpx;
+    font-size:32rpx;
+    font-weight: bold;
+    color:#676767;
 }
-.form{
-  width: 60%;
-  height: 240rpx;
-  font-size: 24rpx;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+
+.together-container{
+    margin-top: 200rpx;
+    border: 1px solid #476886;
+    width: 200rpx;
+    height: 80rpx;
+    border-radius: 5px;
+    text-align:center;
 }
-.form input{
-  border: 1px solid #aaa;
+
+.together{
+    font-size:25rpx;
+    font-weight: bold;
+    line-height:80rpx;
+    color: #476886;
 }
-.modal view{
-  text-align: center;
-  font-size: 24rpx;
+
+
+page{
+    background-color:#B5D5DB;
 }

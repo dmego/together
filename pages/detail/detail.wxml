@@ -18,15 +18,13 @@
             </view>
             <view class="order-description">
                 活动时间:
-                {{ order.description }}
+                {{ order.date+" "+order.time }}
             </view>
-            
             <view class="piuctures-container">
             <image class="content-picture" wx:for="{{ order.pictures }}" wx:key="{{ index }}" src="{{ item }}" background-size="cover"></image>            
             </view>
             <view class="order-description" wx:if="{{order.url != ''}}">
-                地址：
-                <view>{{ order.url }}</view>
+                地址：{{ order.positiondata }}
             </view>
         </view>
         
@@ -51,12 +49,12 @@
             <input bindinput="commentInput" placeholder="输入评论" class="comment-input" />
             <button type="primary" form-type="submit" class="comment-submit"> 评论 </button>
         </form>
-        <view class="join-tool" bindtap="showQRCode" data-qrcode = "{{ order.QRCode }}">立即加入</view>
+    <view class="join-tool" bindtap="showQRCode" data-qrcode = "{{ order.QRCode }}">立即加入</view>
     </view>
 
     <view wx-if="{{ QRCodeShowFlag }}" class="QRCode-container" id="QRCode-container" catchtap="hideQRCode">
         <view class="QRCode-box" id="QRCode-box">
-        长按识别二维码：
+        截图保存
         <image src="{{ QRCodeShow }}" class="QRCde-show"></image>
         </view>
     </view>

@@ -1,0 +1,86 @@
+<scroll-view class="explain" scroll-y='true' scroll-top='0'>
+   <view style="margin-bottom: 4%;margin-top: 6%">
+    <view class="foot_box">
+     <view style="color: #000000; font-size: 32rpx;font-weight:bold">一起爬山</view>
+     <view class="xian"></view>
+    </view>
+    <view>
+     <image src="http://scimg.jb51.net/allimg/160623/14-160623114S2115.jpg"/>
+     <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXxxxxX
+		 XXXXXXXXXXXXXXXX</p >
+    </view>
+   </view>
+   <view style="margin-bottom: 4%;margin-top: 6%">
+    <view class="foot_box">
+     <view style="color: #000000; font-size: 32rpx;font-weight:bold">一起踢球</view>
+     <view class="xian ch"></view>
+    </view>
+    <view>
+     <image src="http://scimg.jb51.net/allimg/161123/106-16112310543X27.jpg"/>
+      <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXxxxxX
+		 XXXXXXXXXXXXXXXX</p >
+    </view>
+   </view>
+   <view style="margin-bottom: 4%;margin-top: 6%">
+    <view class="foot_box ">
+     <view style="color: #000000; font-size: 32rpx;font-weight:bold">一起跑步</view>
+     <view class="xian du"></view>
+    </view>
+    <view>
+     <image src="http://scimg.jb51.net/allimg/160304/14-160304121220545.jpg"/>
+    <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXxxxxX
+		 XXXXXXXXXXXXXXXX</p >
+    </view>
+   </view>
+   <view style="margin-bottom: 4%;margin-top: 6%">
+    <view class="foot_box">
+     <view style="color: #000000; font-size: 32rpx;font-weight:bold">一起骑单车</view>
+     <view class="xian"></view>
+    </view>
+    <view>
+     <image src="http://scimg.jb51.net/allimg/160419/14-16041Z931104b.jpg"/>
+      <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXxxxxX
+		 XXXXXXXXXXXXXXXX</p >
+    </view>
+   </view>
+   <view style="margin-bottom: 4%;margin-top: 6%">
+    <view class="foot_box">
+     <view style="color: #000000; font-size: 32rpx;font-weight:bold">马路志愿服务</view>
+     <view class="xian"></view>
+    </view>
+    <view>
+     <image src="http://ahaq.wenming.cn/jwmsxf/201310/W020131018562729263419.jpg"/>
+      <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXxxxxX
+		 XXXXXXXXXXXXXXXX</p >
+    </view>
+   </view>
+   <view style="margin-bottom: 4%;margin-top: 6%">
+    <view class="foot_box">
+     <view style="color: #000000; font-size: 32rpx;font-weight:bold">迎接新同学</view>
+     <view class="xian"></view>
+    </view>
+    <view>
+     <image src="http://www.cqipc.net/uploadfile/2015/0907/20150907081225485.jpg"/>
+      <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXXXXXXXXXXXX
+		 XXXXXXXXXXXXXxxxxX
+		 XXXXXXXXXXXXXXXX</p >
+    </view>
+   </view>
+ </scroll-view>

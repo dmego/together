@@ -10,17 +10,20 @@
 }
 
 .form-common-style {
-    box-sizing: border-box;
-    width: 690rpx;
+     box-sizing: border-box;
+     width:150px;
+     height:auto; 
+     float:left;
 
     /*padding: 10rpx;*/
     margin: 10rpx 10rpx 10rpx 10rpx;
-
     border: solid 2rpx #999;
     border-radius: 10rpx;
     box-shadow: 0 0 2rpx #888888;
 
 }
+
+
 
 .post-container .image-add-button {
     line-height: 230rpx;
