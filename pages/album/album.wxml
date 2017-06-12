@@ -6,11 +6,13 @@
     </view>
     <view>
      <image src="http://scimg.jb51.net/allimg/160623/14-160623114S2115.jpg"/>
-     <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXxxxxX
-		 XXXXXXXXXXXXXXXX</p >
+     <p style="color: #000000; font-size: 30rpx;">
+     啊啊啊
+     和小伙伴们去爬山咯
+		 爬的是哪座山
+		 爬的是封龙山
+		 吃吃笑笑打打闹闹
+		 在乎的不是目的地而是沿途的风景~</p >
     </view>
    </view>
    <view style="margin-bottom: 4%;margin-top: 6%">
@@ -20,11 +22,10 @@
     </view>
     <view>
      <image src="http://scimg.jb51.net/allimg/161123/106-16112310543X27.jpg"/>
-      <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXxxxxX
-		 XXXXXXXXXXXXXXXX</p >
+      <p style="color: #000000; font-size: 30rpx;">
+      好久没有这么酣畅淋漓了
+		 踢一场球赛！
+		 痛快！</p >
     </view>
    </view>
    <view style="margin-bottom: 4%;margin-top: 6%">
@@ -34,11 +35,12 @@
     </view>
     <view>
      <image src="http://scimg.jb51.net/allimg/160304/14-160304121220545.jpg"/>
-    <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXxxxxX
-		 XXXXXXXXXXXXXXXX</p >
+    <p style="color: #000000; font-size: 30rpx;">
+     早上的阳光刚刚好，
+		 约上小伙伴，整装待发
+     绕着操场也不知道跑了多少圈，心情变得莫名舒畅
+     那，早饭要吃什么呢？
+</p >
     </view>
    </view>
    <view style="margin-bottom: 4%;margin-top: 6%">
@@ -48,11 +50,11 @@
     </view>
     <view>
      <image src="http://scimg.jb51.net/allimg/160419/14-16041Z931104b.jpg"/>
-      <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXxxxxX
-		 XXXXXXXXXXXXXXXX</p >
+      <p style="color: #000000; font-size: 30rpx;">
+      期待了好久的单车之行今天终于到来啦~~
+      从铁大的校园出发，穿过二环路
+      突然发现了世外桃源~~炒鸡喜欢！！
+      希望下次有更多的小伙伴跟我们一起哦~~</p >
     </view>
    </view>
    <view style="margin-bottom: 4%;margin-top: 6%">
@@ -62,11 +64,8 @@
     </view>
     <view>
      <image src="http://ahaq.wenming.cn/jwmsxf/201310/W020131018562729263419.jpg"/>
-      <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXxxxxX
-		 XXXXXXXXXXXXXXXX</p >
+      <p style="color: #000000; font-size: 30rpx;">
+      早上六点多，迎着晨光，志愿小分队到达了目的地，准备来做一个个交通协管的小志愿者！天气很热，还时不时有暖风拂过，但大家对路人送去的祝福平安的笑脸确是走心的。虽然这一上午一直站着很累，但看到大家对我们投来肯定的目光我们就知道，汗水是值得的。志愿小分队很期待做下一次的马路小红帽~~</p >
     </view>
    </view>
    <view style="margin-bottom: 4%;margin-top: 6%">
@@ -76,11 +75,11 @@
     </view>
     <view>
      <image src="http://www.cqipc.net/uploadfile/2015/0907/20150907081225485.jpg"/>
-      <p>XXXXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXXXXXXXXXXXX
-		 XXXXXXXXXXXXXxxxxX
-		 XXXXXXXXXXXXXXXX</p >
+      <p style="color: #000000; font-size: 30rpx;">
+      身穿志愿者服，带着新来的学弟学妹满满的骄傲呢！
+      带着他们逛一逛校园、制备一些生活用品，和他们聊一聊今后的大学生活。
+      希望小学弟学妹们能在铁大有一个充实的大学生活，
+      每天元气满满！</p >
     </view>
    </view>
  </scroll-view>
