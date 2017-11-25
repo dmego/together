@@ -1,0 +1,33 @@
+page {
+  display: flex;
+  flex-direction: column;
+}
+
+.desc {
+  line-height: 40px;
+  color: #333;
+  text-align: center;
+  display: block;
+  padding: 0 20px;
+  margin-bottom: 50px;
+}
+
+image {
+  width: 70%;
+  border-radius: 20px;
+  margin: 0 auto;
+  -moz-box-shadow: 0px 3px 20px #333;
+  -webkit-box-shadow: 0px 3px 20px #333;
+  box-shadow: 0px 3px 20px #333;
+}
+
+.copyright {
+  font-size: 28rpx;
+  color: #999;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx;
+  text-align: center;
+}

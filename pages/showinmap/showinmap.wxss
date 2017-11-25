@@ -1,0 +1,7 @@
+/**index.wxss**/
+.homepage {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: #F4F6F7
+}

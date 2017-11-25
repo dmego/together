@@ -1,0 +1,18 @@
+<!--评论模版-->
+<template name="comment">
+    <view bindtap="commentTap" data-item="{{item}}">
+        <view class="userInfo">
+            <view>
+                <image src="{{item.avatar}}" class="avatar" mode="aspectFit"></image>
+            </view>
+            <view class="nickTime">
+                <view class="nickArea">
+                    <text class="nick">{{item.username}}</text>
+                    <text wx:if="{{item.pid!=0}}" class="nick" style="color:rgb(191,191,191)">回复</text><text wx:if="{{item.pid!=0}}" class="nick">{{item.pusername}}</text>
+                </view>
+                <text class="postTime" style="color:rgb(191,191,191);font-size:24rpx">{{item.created_at}}</text>
+            </view>
+        </view>
+        <view class="actComment">{{item.content}}</view>
+    </view>
+</template>

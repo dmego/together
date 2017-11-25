@@ -1,0 +1,338 @@
+@import '/style/weui.wxss';
+@import '/style/zanui.wxss';
+service .subtitle {
+  padding: 20rpx 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  border-top: 20rpx solid #f4f4f4;
+}
+
+service .subtitle image {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 30rpx;
+  flex-shrink: 0;
+}
+
+service .subtitle text {
+  font-size: 30rpx;
+  color: #666;
+}
+
+service .content {
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx 40rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #666;
+  overflow: hidden;
+  border-top: 1rpx solid #f4f4f4;
+  text-align: justify;
+}
+
+service .content image {
+  width: 200rpx;
+  height: 130rpx;
+  margin-right: 25rpx;
+  border-radius: 5rpx;
+  flex-shrink: 0;
+  background: #f5f5f5;
+}
+
+service .content .vertical {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+service .content .title {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 7rpx;
+}
+
+service.selectable:active .subtitle {
+  background: #f0f0f0;
+}
+
+service.selectable:active .content {
+  background: #f0f0f0;
+}
+
+service .subtitle.selectable:active {
+  background: #f0f0f0;
+}
+
+service .content.selectable:active {
+  background: #f0f0f0;
+}
+
+service .vote-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  border-bottom: 1rpx solid #f4f4f4
+}
+
+service .vote-bar .attitude {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 25rpx;
+}
+
+service .vote-bar .attitude image {
+  width: 42rpx;
+  height: 42rpx;
+  margin: 3rpx;
+  flex-shrink: 0;
+}
+
+service .vote-bar .attitude text {
+  font-size: 28rpx;
+  color: #666;
+  padding-left: 20rpx;
+}
+jwc {
+  display: block;
+  border-bottom: 20rpx solid #f4f4f4;
+}
+
+jwc .subtitle {
+  padding: 20rpx 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  border-top: 20rpx solid #f4f4f4;
+}
+
+jwc .subtitle image {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 30rpx;
+  flex-shrink: 0;
+}
+
+jwc .subtitle text {
+  font-size: 30rpx;
+  color: #666;
+}
+
+jwc .content {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx 40rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #666;
+  overflow: hidden;
+  border-top: 1rpx solid #f4f4f4;
+  text-align: justify;
+}
+
+jwc .hint {
+  display: block;
+  padding: 30rpx 40rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #666;
+  border-top: 20rpx solid #f4f4f4;
+  text-align: justify;
+}
+
+jwc .content .title {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 7rpx;
+}
+
+jwc .content:active {
+  background: #f0f0f0;
+}
+
+jwc .content .horizontal {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5rpx;
+  align-items: center
+}
+
+jwc .content .horizontal text + text {
+  margin-left: 10rpx;
+}
+
+jwc .content .horizontal .tag {
+  background: #eee;
+  color: #666;
+  font-size: 26rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 6rpx
+}
+
+jwc .content .horizontal .tag.urgent {
+  background: #ff4384;
+  color: #fff;
+}
+
+jwc .content .horizontal .tag.important {
+  background: #ffac00;
+  color: #fff;
+}
+
+jwc .content .horizontal .tag.announcement {
+  background: #8cce23;
+  color: #fff;
+}
+
+jwc .content .horizontal .tag.lecture {
+  background: #1cadcf;
+  color: #fff;
+}
+
+jwc .content .horizontal .tag.competition {
+  background: #ddcf1a;
+  color: #fff;
+}
+
+.item-wrapper{
+    width: 100%; 
+    overflow: hidden;
+    border-top: 1px solid #f4f4f4;
+}
+
+.item-list{
+    position: relative;
+    width: 100%;
+    height: 138rpx;
+    margin-left: 20rpx;
+}
+
+.item-info, .item-oper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.item-info{
+    display: flex;
+    padding: 20rpx 20rpx 20rpx 0;
+    z-index: 2;
+    background: white;
+    transition: left 0.2s ease-in-out;
+}
+
+.item-list:first-child{
+    border-top: 1px solid #f4f4f4;
+}
+
+.item-oper{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.oper-delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150rpx;
+    z-index: 1;
+    color: white;
+    background: red;
+}
+
+.info-img{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 25rpx;
+}
+
+.info-wrapper{
+    margin-left: 20rpx;
+    width: 588rpx;
+}
+
+.info-desc{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 6rpx;
+}
+
+.info-desc .name{
+    font-size: 32rpx;
+    color: black;
+    font-weight: 600;
+}
+
+.info-desc .time{
+    font-size: 24rpx;
+    color: #999;
+}
+
+.info-content{
+     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 6rpx;
+}
+
+.info-content .message{
+   font-size: 28rpx;
+     color: #bf925c;
+    margin-top: 4rpx;
+}
+
+.info-content .status{
+    font-size: 24rpx;
+    color: #bf925c;
+}
+
+.info-content .read_1{
+    color: #999;
+}
+
+/*页面为空的样式*/
+
+.empty_img {
+  height: 115rpx;
+  width: 141rpx;
+}
+
+.t28rpx {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: rgb(142, 142, 142);
+}
+
+.imgitem {
+  display: flex;
+  justify-content: center;
+  margin-top: 73rpx;
+  
+}
+
+.txtitem {
+  display: flex;
+  justify-content: center;
+  margin-top: 29rpx;
+  margin-bottom: 29rpx;
+}

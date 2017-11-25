@@ -1,241 +1,437 @@
-// pages/detail/detail.js
 //获取应用实例
-var app = getApp();
-
-var warnImg = 'data:image/png;base64,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';
-//查询用户信息
-const AV = require('../../libs/av-weapp.js');
-var pictures = [];
+var app = getApp()
+var Bmob = require("../../utils/bmob.js");
+var common = require('../template/getCode.js')
+var that;
+var myDate = new Date();
+//格式化日期
+function formate_data(myDate) {
+  let month_add = myDate.getMonth() + 1;
+  var formate_result = myDate.getFullYear() + '-'
+    + month_add + '-'
+    + myDate.getDate()
+  return formate_result;
+}
 Page({
-  data:{
-      pictures: [],
-      QRCode: '',
-      author: {},
-      title: '',
-      content: '',
-      date: '2016-12-20',
-      time: '11:19',
-      positiondata: '点击选择位置',
-      discountId: ''
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    notice_status: false,
+    accounts: ["微信号", "QQ号", "手机号"],
+    accountIndex: 0,
+    peopleHide: false,
+    isAgree: false,
+    date: formate_data(myDate),
+    address: '点击选择位置',
+    longitude: 0, //经度
+    latitude: 0,//纬度
+    showTopTips: false,
+    TopTips: '',
+    noteMaxLen: 200,//备注最多字数
+    content: "",
+    noteNowLen: 0,//备注当前字数
+    types: ["运动", "游戏", "交友", "旅行", "读书", "竞赛", "电影", "音乐", "其他"],
+    typeIndex: "0",
+    showInput: false,//显示输入真实姓名,
   },
-  onLoad:function(options){
-    new app.WeToast();
-    // 页面初始化 options为页面跳转所带来的参数
-    this.data.pictures = [];
-    pictures = [];//防止缓存影响
-    
-    var that = this;
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.data.author = userInfo;
-      that.data.discountId = options.disId;
-      
-      if (options.disId){
-        
-        let detail = {};
-        let discount = new AV.Query('discount');   
-        discount.equalTo('objectId', that.data.discountId);
-        discount.find().then(function (results) {
-        detail.content = results[0].attributes.content;
-        detail.disForm = results[0].attributes.disForm;
-        pictures.push(results[0].get('background_url'));
-        that.data.title = detail.content.summary;
-        that.data.content = detail.content.detail.join('');
-        that.data.date = detail.disForm;
-        that.data.time = detail.disForm;
-        that.setData({
-                discount: detail,
-                pictures: pictures
-            });
-            
-        });
-      }
+
+  tapNotice: function (e) {
+    if (e.target.id == 'notice') {
+      this.hideNotice();
+    }
+  },
+  showNotice: function (e) {
+    this.setData({
+      'notice_status': true
     });
   },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  },
-  titleEventFunc: function(e) {
-      if(e.detail && e.detail.value) {
-          this.data.title = e.detail.value;
-      }
-  },
-  contentEventFunc: function(e) {
-      if(e.detail && e.detail.value) {
-          this.data.content = e.detail.value;
-      }
+  hideNotice: function (e) {
+    this.setData({
+      'notice_status': false
+    });
   },
 
-  dateEventFunc: function(e) { 
+
+  //字数改变触发事件
+  bindTextAreaChange: function (e) {
+    var that = this
+    var value = e.detail.value,
+      len = parseInt(value.length);
+    if (len > that.data.noteMaxLen)
+      return;
+    that.setData({
+      content: value, noteNowLen: len
+    })
   },
-  timeEventFunc: function(e) {
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    that = this;
+    that.setData({//初始化数据
+      src: "",
+      isSrc: false,
+      ishide: "0",
+      autoFocus: true,
+      isLoading: false,
+      loading: true,
+      isdisabled: false
+    })
   },
-  positionDataEventFunc: function (e) {
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    wx.hideToast()
   },
-  
- //日期选择
-  bindDateChange: function(e) {
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var myInterval = setInterval(getReturn, 500); ////半秒定时查询
+    function getReturn() {
+      wx.getStorage({
+        key: 'user_openid',
+        success: function (ress) {
+          if (ress.data) {
+            clearInterval(myInterval)
+            that.setData({
+              loading: true
+            })
+          }
+        }
+      })
+    }
+  },
+
+  //上传图片
+  uploadPic: function () {//选择图标
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths
+        that.setData({
+          isSrc: true,
+          src: tempFilePaths
+        })
+      }
+    })
+  },
+
+  //删除图片
+  clearPic: function () {//删除图片
+    that.setData({
+      isSrc: false,
+      src: ""
+    })
+  },
+
+  //限制人数
+  switch1Change: function (e) {
+    if (e.detail.value == false) {
+      this.setData({
+        peopleHide: false
+      })
+    } else if (e.detail.value == true) {
+      this.setData({
+        peopleHide: true
+      })
+    }
+  },
+
+  //改变时间
+  bindDateChange: function (e) {
     this.setData({
       date: e.detail.value
     })
-    if(e.detail && e.detail.value) {
-        this.data.date = e.detail.value;
-      }
-
   },
-  //时间选择
-  bindTimeChange: function(e) {
+  //改变活动类别
+  bindTypeChange: function (e) {
     this.setData({
-      time: e.detail.value
+      typeIndex: e.detail.value
     })
-    if (e.detail && e.detail.value) {
-      this.data.time = e.detail.value;
-    }
   },
-  //位置选择
-    positionSwitchChange: function(e){
-    this.setData({
-      position: e.detail.value,
-    })
-    if(e.detail.value && this.data.positiondata === '点击选择位置') {
-      this.positionChoose();
-    }
+  //选择地点
+  addressChange: function (e) {
+    this.addressChoose(e);
   },
-  positionChange: function(){
-    this.positionChoose();
-  },
-  positionChoose:function(){
+  addressChoose: function (e) {
     var that = this;
     wx.chooseLocation({
-      success: function(res){
+      success: function (res) {
         that.setData({
-          positiondata:res.name || res.address
-        }) 
+          address: res.name,
+          longitude: res.longitude, //经度
+          latitude: res.latitude,//纬度
+        })
         if (e.detail && e.detail.value) {
-          this.data.positiondata = e.detail.value;
-        }    
+          this.data.address = e.detail.value;
+        }
       },
-      fail: function() {
-        // fail
+      fail: function (e) {
       },
-      complete: function() {
-        // complete
+      complete: function (e) {
       }
     })
   },
 
-  formSubmit: function(e) {
-  
-        var orderObj = AV.Object.extend('orders'),
-          order = new orderObj();
-          order.set('title', this.data.title);
-          order.set('content', this.data.content);
-          order.set('date', this.data.date);
-          order.set('time', this.data.time);
-          order.set('positiondata', this.data.positiondata);
-          order.set('author', this.data.author);
-          order.set('pictures', this.data.pictures);
-          order.set('discountId', this.data.discountId);
-          order.set('QRCode', this.data.QRCode);
+  //改变联系方式
+  bindAccountChange: function (e) {
+    this.setData({
+      accountIndex: e.detail.value
+    })
+  },
 
-          console.log(this.data.title + this.data.content + this.data.date + this.data.time + this.data.positiondata + this.data.author + this.data.pictures + this.data.discountId + this.data.QRCode);
+  //同意相关条例
+  bindAgreeChange: function (e) {
+    this.setData({
+      isAgree: !!e.detail.value.length,
+      showInput: !this.data.showInput
+    });
+  },
 
-        order.save().then(function (order) {
-          // 成功保存之后，执行其他逻辑.
-          wx.switchTab({
-            url: "../index/index",
-          });
-          //wx.navigateBack();
-        }, function (error) {
-          // 异常处理
-          console.log(error);
-        });
-  },  
-  chooseQRCode: function() {
-      //上传图片相关
-      var that = this;
-      wx.chooseImage({
-          count: 1, // 默认9
-          sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-          sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-          success: function (res) {
-              // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-              let tempFilePaths = res.tempFilePaths;
-              tempFilePaths.forEach(function(url, index){
-                let strRegex = "(.jpg|.png|.gif|.jpeg)$"; //用于验证图片扩展名的正则表达式
-                let re=new RegExp(strRegex);
-                if (re.test(url.toLowerCase())){
-                    let name = '' + index + '.' + url.split('.')[url.split('.').length - 1],
-                        localFile = url,
-                        image = new AV.File(name, {
-                            blob: {  
-                                uri: localFile,  
-                            }
-                        });
-                        image.save().then(function(file) {
-                            // 文件保存成功
-                            that.setData({
-                                QRCode: file.url()
-                            });
-                        }, function(error) {
-                            // 异常处理
-                            console.error(error);
-                        }); 
-                }else {
-                    throw "选择的不是图片";
-                }
-               
-              });
-          }
+  //表单验证
+  showTopTips: function () {
+    var that = this;
+    this.setData({
+      showTopTips: true
+    });
+    setTimeout(function () {
+      that.setData({
+        showTopTips: false
       });
-  },  
-  chooseImage: function() {
-      //上传图片相关
-      var that = this;
-      wx.chooseImage({
-          count: 1, // 默认9
-          sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-          sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-          success: function (res) {
-              // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-              let tempFilePaths = res.tempFilePaths;
-              tempFilePaths.forEach(function(url, index){
-                let strRegex = "(.jpg|.png|.gif|.jpeg)$"; //用于验证图片扩展名的正则表达式
-                let re=new RegExp(strRegex);
-                if (re.test(url.toLowerCase())){
-                    let name = '' + index + '.' + url.split('.')[url.split('.').length - 1],
-                        localFile = url,
-                        image = new AV.File(name, {
-                            blob: {  
-                                uri: localFile,  
-                            }
-                        });
-                        image.save().then(function(file) {
-                            // 文件保存成功
-                            pictures.push(file.url());
-                            that.setData({
-                                pictures: pictures
-                            });
-                        }, function(error) {
-                            // 异常处理
-                            console.error(error);
-                        }); 
-                }else {
-                    throw "选择的不是图片";
-                }
-               
-              });
-          }
+    }, 3000);
+  },
+  //提交表单
+  submitForm: function (e) {
+    var that = this;
+    if (that.data.showInput == false) {
+      wx.showModal({
+        title: '请先阅读《发起须知》',
+        content: '仔细阅读"须知"后请勾选同意'
+      })
+      return;
+    }
+    var title = e.detail.value.title;
+    var endtime = this.data.date;
+    var typeIndex = this.data.typeIndex;
+    var acttype = 1 + parseInt(typeIndex);
+    var acttypename = getTypeName(acttype); //获得类型名称
+    var address = this.data.address;
+    var longitude = this.data.longitude; //经度
+    var latitude = this.data.latitude;//纬度
+    var switchHide = e.detail.value.switchHide;
+    var peoplenum = e.detail.value.peoplenum;
+    console.log(peoplenum);
+    var content = e.detail.value.content;
+    //------发布者真实信息------
+    var realname = e.detail.value.realname;
+    var contactindex = this.data.accountIndex;
+    if (contactindex == 0) {
+      var contactWay = "微信号";
+    } else if (contactindex == 1) {
+      var contactWay = "QQ号";
+    } else if (contactindex == 2) {
+      var contactWay = "手机号";
+    }
+    var contactValue = e.detail.value.contactValue;
+
+    //先进行表单非空验证
+    if (title == "") {
+      this.setData({
+        showTopTips: true,
+        TopTips: '请输入主题'
       });
+    } else if (address == '点击选择位置') {
+      this.setData({
+        showTopTips: true,
+        TopTips: '请选择地点'
+      });
+    } else if (switchHide == true && peoplenum == "") {
+      this.setData({
+        showTopTips: true,
+        TopTips: '请输入人数'
+      });
+    } else if (content == "") {
+      this.setData({
+        showTopTips: true,
+        TopTips: '请输入活动内容'
+      });
+    } else if (that.data.showInput == true && realname == "") {
+      this.setData({
+        showTopTips: true,
+        TopTips: '请输入真实姓名'
+      });
+    } else if (that.data.showInput == true && contactValue == "") {
+      this.setData({
+        showTopTips: true,
+        TopTips: '请输入联系方式'
+      });
+    } else {
+      that.setData({
+        isLoading: true,
+        isdisabled: true
+      })
+
+      //向 Events 表中新增一条数据
+      wx.getStorage({
+        key: 'user_id',
+        success: function (ress) {
+          var Diary = Bmob.Object.extend("Events");
+          var diary = new Diary();
+          var me = new Bmob.User();
+          me.id = ress.data;
+          diary.set("title", title);
+          diary.set("endtime", endtime);
+          diary.set("acttype", acttype+"");
+          diary.set("acttypename", getTypeName(acttype));
+          diary.set("address", address);
+          diary.set("longitude", longitude);//经度
+          diary.set("latitude", latitude);//纬度
+          diary.set("peoplenum", peoplenum);
+          diary.set("content", content);
+          diary.set("publisher", me);
+          diary.set("likenum", 0);
+          diary.set("commentnum", 0);
+          diary.set("liker", []);
+          diary.set("joinnumber", 0); //发布后初始加入人数为0
+          diary.set("joinArray", []);
+          if (that.data.isSrc == true) {
+            var name = that.data.src; //上传图片的别名
+            var file = new Bmob.File(name, that.data.src);
+            file.save();
+            diary.set("actpic", file);
+          }
+          //新增操作
+          diary.save(null, {
+            success: function (result) {
+              //再将发布者的信息添加到联系表中
+              wx.getStorage({
+                key: 'user_id',
+                success: function (ress) {
+                  var Contacts = Bmob.Object.extend("Contacts");
+                  var contact = new Contacts();
+                  var Events = Bmob.Object.extend("Events");
+                  var event = new Events();
+                  event.id = result.id;
+                  var me = new Bmob.User();
+                  me.id = ress.data;
+                  contact.set("publisher", me); //发布人是自己
+                  contact.set("currentUser", me); //参加的人也是自己
+                  contact.set("event", event);
+                  contact.set("realname", realname);
+                  contact.set("contactWay", contactWay);
+                  contact.set("contactValue", contactValue);
+                  contact.save();
+                },
+              })
+
+              console.log("发布成功,objectId:" + result.id);
+              that.setData({
+                isLoading: false,
+                isdisabled: false,
+                eventId:result.id,
+              })
+              //添加成功，返回成功之后的objectId(注意，返回的属性名字是id,而不是objectId)
+              common.dataLoading("发起成功", "success", function () {
+                //重置表单
+                that.setData({
+                  title: '',
+                  typeIndex: 0,
+                  address: '点击选择位置',
+                  longitude: 0, //经度
+                  latitude: 0,//纬度
+                  data: formate_data(myDate),
+                  isHide: true,
+                  peoplenum: 0,
+                  peopleHide: false,
+                  isAgree: false,
+                  accountIndex: 0,
+                  realname: "",
+                  content: "",
+                  contactValue: '',
+                  noteNowLen: 0,
+                  showInput: false,
+                  src: "",
+                  isSrc: false,
+
+                })
+              });
+            },
+            error: function (result, error) {
+              //添加失败
+              console.log("发布失败=" + error);
+              common.dataLoading("发起失败", "loading");
+              that.setData({
+                isLoading: false,
+                isdisabled: false
+              })
+            }
+          })
+        },
+      })
+    }
+    setTimeout(function () {
+      that.setData({
+        showTopTips: false
+      });
+    }, 1000);
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })
+
+//根据活动类型获取活动类型名称
+function getTypeName(acttype) {
+  var acttypeName = "";
+  if (acttype == 1) acttypeName = "运动";
+  else if (acttype == 2) acttypeName = "游戏";
+  else if (acttype == 3) acttypeName = "交友";
+  else if (acttype == 4) acttypeName = "旅行";
+  else if (acttype == 5) acttypeName = "读书";
+  else if (acttype == 6) acttypeName = "竞赛";
+  else if (acttype == 7) acttypeName = "电影";
+  else if (acttype == 8) acttypeName = "音乐";
+  else if (acttype == 9) acttypeName = "其他";
+  return acttypeName;
+}

@@ -1,4 +1,0 @@
-Page({
-	onLoad: function (options) {
-	}
-});

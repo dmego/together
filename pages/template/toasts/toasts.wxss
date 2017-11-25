@@ -1,0 +1,552 @@
+/* template/toasts/toasts.wxss */
+
+.page {
+  white-space: normal;
+}
+
+.apply-succeed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.apply-succeed-toast {
+  width: 84%;
+  background-color: #fff;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.apply-succeed-image {
+  width: 158rpx;
+  height: 158rpx;
+  margin: 50rpx auto 30rpx;
+}
+
+.apply-succeed-content {
+  text-align: center;
+  padding-bottom: 30rpx;
+}
+
+.apply-succeed-btn {
+  position: relative;
+  z-index: 100;
+  width: 80%;
+  color: #fff;
+  background: #3dd1a5;
+  margin-bottom: 40rpx;
+}
+
+/*拍照上传*/
+
+.check-succeed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check-succeed-toast {
+  position: relative;
+  width: 84%;
+  background-color: #fff;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.check-succeed-title {
+  text-align: center;
+  font-size: 40rpx;
+  margin: 20rpx 0 16rpx;
+  font-weight: bold;
+}
+
+.check-succeed-content {
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.check-succeed-img {
+  margin: 0 auto 20rpx;
+  width: 70%;
+  border: 4rpx solid #f0f0f0;
+}
+
+.check-succeed-btn {
+  display: inline-block;
+  width: 50%;
+  padding: 30rpx 0;
+  text-align: center;
+  color: #3dd1a5;
+}
+
+.check-succeed-line {
+  position: absolute;
+  left: 50%;
+  bottom: 20%;
+  width: 1px;
+  height: 50%;
+  background: #e5e5e5;
+}
+
+.check-succeed-icon {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  width: 30rpx;
+}
+
+/*俱乐部二维码弹框*/
+
+.code-succeed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.code-succeed-toast {
+  position: relative;
+  width: 80%;
+  border-radius: 20rpx;
+  background: #fff;
+  margin: 7% 0 0 10%;
+  padding-bottom: 66rpx; 
+  z-index: 100;
+}
+
+.code-club-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 30rpx 0;
+  padding: 60rpx 0 36rpx;
+  font-size: 28rpx;
+}
+
+.code-club-theme {
+  font-size: 36rpx;
+  color: #252525;
+  font-weight: bold;
+  margin-bottom: 41rpx;
+}
+
+.code-club-tip {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  margin: 40rpx 0 30rpx;
+  background: #3dd1a5;
+  color: #fff;
+  line-height: 56rpx;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-space{
+  line-height: 48rpx;
+  letter-spacing: -0.6rpx;
+}
+.code-message {
+  margin: 30rpx auto 0;
+}
+
+.code-message-align {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.code-message-logo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.code-message-icon {
+  position: absolute;
+  top: 75rpx;
+  left: 50%;
+  margin-left: 26rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.code-content-title {
+  text-align: center;
+  padding: 20rpx 30rpx 10rpx;
+}
+
+.code-content-text {
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.code-message-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 360rpx;
+  border: 1rpx solid #e5e5e5;
+}
+
+.code-content-btn {
+  width: 80%;
+  background: #3dd1a5;
+  color: #fff;
+  margin-bottom: 30rpx;
+}
+
+.code-text {
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 14%;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.code-club-position {
+  margin-top: 28%;
+}
+
+.code-span {
+  text-align: center;
+  font-size: 30rpx;
+  color: #b2b2b2;
+  padding-bottom: 20rpx;
+}
+
+.code-close {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  width: 32rpx;
+  height: 32rpx;
+  padding: 20rpx;
+}
+
+/*活动二维码*/
+
+.activity-code-title {
+  text-align: center;
+  padding: 0 11%;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1a1a1a;
+  line-height: 50rpx;
+  letter-spacing: -0.8rpx;
+}
+
+.activity-code-img {
+  width: 60%;
+  margin: 42rpx 0 40rpx 20%;
+  border: 1rpx solid #e6e6e6;
+}
+
+.activity-code-txt {
+  text-align: center;
+  font-size: 26rpx;
+  margin: 0 30rpx;
+  color: #1a1a1a;
+  padding-top: 86rpx;
+  line-height: 50rpx;
+  letter-spacing: -0.6rpx;
+}
+
+/*发送验证码弹框*/
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+  /*display: flex;
+  justify-content: center;
+  align-items: center;*/
+}
+
+.modal .dialog {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  margin-left: -42%;
+  width: 84%;
+  background-color: #fff;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: space-between;*/
+}
+
+.modol-text {
+  margin: 33rpx 40rpx 31rpx;
+  font-size: 36rpx;
+}
+
+.modal-box {
+  position: relative;
+  margin: 0 40rpx 25rpx;
+}
+
+.model-input {
+  display: inline-block;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  height: 70rpx;
+  width: 60%;
+  padding-left: 28rpx;
+}
+
+.modal-time {
+  position: absolute;
+  top: 18rpx;
+  right: 10rpx;
+  font-size: 32rpx;
+  color: #8e8e8e;
+  z-index: 100;
+}
+
+.modal-button {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 28rpx;
+}
+
+.modal-btn {
+  display: inline-block;
+  padding: 0 80rpx;
+  border-radius: 4px;
+  margin: 0 10px;
+}
+
+.modal-cancel {
+  color: #8e8e8e;
+  background: #f5f5f5;
+}
+
+.modal-canadd {
+  border: 1px solid #e5e7ed;
+  background: rgb(61, 209, 165);
+  color: #fff;
+}
+
+.modal-box-tip {
+  text-align: center;
+  color: #8e8e8e;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+
+/*手机号码弹框*/
+
+.phone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-dialog {
+  position: fixed;
+  top: 20%;
+  width: 84%;
+  background-color: #fff;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  left: 50%;
+  margin-left: -42%;
+}
+
+.phone-text {
+  margin: 33rpx 40rpx 31rpx;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.phone-box {
+  position: relative;
+  margin: 0 40rpx 25rpx;
+}
+
+.phone-input {
+  display: inline-block;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  height: 70rpx;
+  width: 93%;
+  padding-left: 28rpx;
+}
+
+.phone-button {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.phone-btn {
+  display: inline-block;
+  padding: 0 90rpx;
+  border-radius: 4px;
+  margin: 0 10px;
+}
+
+.phone-cancel {
+  color: #8e8e8e;
+  background: #f5f5f5;
+}
+
+.phone-canadd {
+  border: 1px solid #e5e7ed;
+  background: rgb(61, 209, 165);
+  color: #fff;
+}
+
+/*发送邮箱弹框*/
+
+.email {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-dialog {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  margin-left: -42%;
+  width: 84%;
+  background-color: #fff;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.email-text {
+  margin: 33rpx 40rpx 31rpx;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.email-box {
+  position: relative;
+  margin: 0 40rpx 25rpx;
+  padding-right: 28rpx;
+}
+
+.email-input {
+  display: inline-block;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  height: 70rpx;
+  width: 100%;
+  padding-left: 28rpx;
+}
+
+.email-button {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.email-btn {
+  display: inline-block;
+  padding: 0 90rpx;
+  border-radius: 4px;
+  margin: 0 10px;
+}
+
+.email-cancel {
+  color: #8e8e8e;
+  background: #f5f5f5;
+}
+
+.email-canadd {
+  border: 1px solid #e5e7ed;
+  background: rgb(61, 209, 165);
+  color: #fff;
+}
+
+.show-tips {
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  width: 350rpx;
+  margin-top: -40rpx;
+  margin-left: -175rpx;
+  border-radius: 10rpx;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 15rpx 20rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  white-space: wrap;
+  color: white;
+  text-align: center;
+  display: none;
+}

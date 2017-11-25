@@ -1,0 +1,74 @@
+<import src="/wxSearch/wxSearch.wxml" />
+<import src="../template/activity/common-list.wxml" />
+<view class="wxSearch-section">
+  <view class="search-pancel">
+    <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" name="input" confirm-type="搜索" class="search-input" placeholder="请输入关键字..."></input>
+    <button bindtap="findEach" class="search-button" form-type="submit" size="mini" plain="true">
+      <icon type="search" color="#959595" size="12" />
+    </button>
+  </view>
+</view>
+<template is="wxSearch" data="{{wxSearchData}}" />
+<view class="scontainer">
+  <view class="bg">
+    <view class="choose_user" style="border-bottom:1rpx solid #e6e6e6;">
+      <view class="choose_user_item" style="color:#{{tradeType==0?'fff':'118fff'}};background:#{{tradeType==0?'118fff':'fff'}};" bindtap="choseTradeType" id="0">全部</view>
+      <view class="choose_user_item" style="color:#{{tradeType==1?'fff':'118fff'}};background:#{{tradeType==1?'118fff':'fff'}};" bindtap="choseTradeType" id="1">运动</view>
+      <view class="choose_user_item" style="color:#{{tradeType==2?'fff':'118fff'}};background:#{{tradeType==2?'118fff':'fff'}};" bindtap="choseTradeType" id="2">游戏</view>
+      <view class="choose_user_item" style="color:#{{tradeType==3?'fff':'118fff'}};background:#{{tradeType==3?'118fff':'fff'}};" bindtap="choseTradeType" id="3">交友</view>
+      <view class="choose_user_item" style="color:#{{tradeType==4?'fff':'118fff'}};background:#{{tradeType==4?'118fff':'fff'}};" bindtap="choseTradeType" id="4">旅行</view>
+      <view class="choose_user_item" style="color:#{{tradeType==5?'fff':'118fff'}};background:#{{tradeType==5?'118fff':'fff'}};" bindtap="choseTradeType" id="5">读书</view>
+      <view class="choose_user_item" style="color:#{{tradeType==6?'fff':'118fff'}};background:#{{tradeType==6?'118fff':'fff'}};" bindtap="choseTradeType" id="6">竞赛</view>
+      <view class="choose_user_item" style="color:#{{tradeType==7?'fff':'118fff'}};background:#{{tradeType==7?'118fff':'fff'}};" bindtap="choseTradeType" id="7">电影</view>
+      <view class="choose_user_item" style="color:#{{tradeType==8?'fff':'118fff'}};background:#{{tradeType==8?'118fff':'fff'}};" bindtap="choseTradeType" id="8">音乐</view>
+      <view class="choose_user_item" style="color:#{{tradeType==9?'fff':'118fff'}};background:#{{tradeType==9?'118fff':'fff'}};" bindtap="choseTradeType" id="9">其他</view>
+    </view>
+  </view>
+
+  <view class="index-container">
+    <!--无通知记录-->
+    <view wx:if="{{moodList.length == 0}}">
+      <view class="imgitem">
+        <image src="/static/images/norecord1.png" class="empty_img"></image>
+      </view>
+      <view class="txtitem">
+        <text class="t28rpx">检索不到活动</text>
+      </view>
+    </view>
+    <view wx:if="{{moodList.length > 0}}">
+      <view class="activities" wx:for="{{moodList}}" wx:key="id">
+        <view class="activity" wx:if="{{item.acttype == tradeType || tradeType == 0}}" index="{{index}}">
+          <view class="list_header">
+            <view class="list_header_left">
+              <image mode="aspectFill" src="{{item.publisherPic}}" wx:if="publisherPic"></image>
+              <view>{{item.publisherName}}</view>
+            </view>
+          </view>
+          <view class="horizontal">
+            <view class="tag tag_{{item.acttype}}">{{item.acttypename}}</view>
+            <text class="title">{{ item.title }}</text>
+          </view>
+          <image mode="aspectFill" class="photo" src="{{item.actPic}}" wx:if="{{item.actPic}}" data-actid="{{item.id}}" data-pubid='{{item.publisherId}}' bindtap="click_activity"></image>
+          <text class="intro">{{item.content}}</text>
+          <view>
+            <text class="time">有效时间：{{ item.endtime }}</text>
+          </view>
+          <view>
+            <text class="location">活动地点：{{ item.address }}</text>
+          </view>
+          <view class="content-date list_header_right">
+            <image src="/static/images/calendar.png"></image>
+            <text>{{item.pubtime}}</text>
+            <image src="/static/images/comments.png"></image>
+            <text class="">{{item.commentnum}}</text>
+            <image src="/static/images/home-like.png"></image>
+            <text class="">{{item.likenum}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="loadingmore">
+        <view class="no-more">---无更多活动---</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,7 +1,0 @@
-<view class="container">
-    <image class="avatar" src="/images/logo.png"></image>
-    <text class="motto">让兴趣不再孤单，让爱好不再流浪</text>
-    <view catchtap="onTapJump" class="together-container">
-        <text class="together">出发吧，一起</text>
-    </view>
-</view>

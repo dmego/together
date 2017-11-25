@@ -1,0 +1,47 @@
+<scroll-view scroll-y='true' class='service'>
+  <view class="box">
+    <view class="tit">出发吧一起</view>
+    <view class="tit_s">
+      一.前言
+    </view>
+    <view class="cont">
+      <p>本手册是石家庄铁道大学SmartCoder团队开展的项目《一起》第二版使用说明</p>
+    </view>
+
+    <view class="tit_s">
+      二.软件概述
+    </view>
+    <view class="cont">
+      <p>让兴趣不再孤单，让爱好不再流浪”是我们微信小程序《一起》的主题，旨在解决当代大学生在校园生活中的孤独感，让大家找到志同道合的朋友，在跑步、健身、竞赛等活动中找到伙伴。利用小程序即开即用，用完就走的特点与交友相结合，打造一款高效快捷、无负担的线下交友小程序</p>
+    </view>
+
+    <view class="tit_s">
+      三. 开源协议(基于MIT)
+    </view>
+    <view class="cont">
+      <p>MIT License</p>
+    </view>
+    <view class="cont">
+      <p>Copyright (c) 2017 Dmego</p>
+    </view>
+    <view class="cont">
+      <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+        modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+    </view>
+    <view class="cont">
+      <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+    </view>
+    <view class="cont">
+      <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+        HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+      </p>
+    </view>
+
+    <view class="tit_s">
+      四.项目地址
+    </view>
+    <view class="cont">
+      <p>GitHub: https://github.com/dmego/together</p>
+    </view>
+  </view>
+</scroll-view>

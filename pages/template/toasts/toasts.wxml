@@ -1,0 +1,34 @@
+<!--template/toasts/toasts.wxml-->
+<!--显示弹框，要把div的css设置为opacity:1;pointer-events:auto;-->
+<!--活动二维码弹框-->
+<template name="actCode">
+  <view class="code-succeed" wx:if="{{codeHehe}}" style="opacity:1;pointer-events:auto;">
+    <view class="code-succeed-toast code-club-position">
+      <image src="https://cdn.51julebu.com/xiaochengxu/image/close1@2x.png" class="code-close" bindtap="closeCode"></image>
+      <view class="activity-code-txt">分享活动二维码,用微信扫一扫即可参加活动</view>
+      <image mode="widthFix" class="activity-code-img" src="data:image/png;base64,{{imageBytes}}"></image>
+      <view class="activity-code-title">{{listTitle}}</view>
+    </view>
+  </view>
+</template>
+
+<!--二维码弹框-->
+<template name="actCode1">
+  <view class="code-succeed" wx:if="{{codeHehe}}" style="opacity:1;pointer-events:auto;">
+    <view class="code-succeed-toast">
+      <image src="https://cdn.51julebu.com/xiaochengxu/image/close1@2x.png" class="code-close" bindtap="closeCode"></image>
+      <view class="code-club-content">
+        <view class="code-club-theme">邀请好友加入活动</view>
+        <view class="text-center text-space">方式一：点击右上角【...】－【分享】发送给好友，点击即可查看活动详情</view>
+        <view class="code-club-tip text-center">或</view>
+        <view class="text-space">方式二：分享下方二维码</view>
+        <view class="text-space">用微信扫一扫即可查看活动详情</view>
+      </view>
+      <view>
+        <image mode="widthFix" class="code-message-img" src="data:image/png;base64,{{imageBytes}}"></image>
+      </view>
+    </view>
+  </view>
+</template>
+
+

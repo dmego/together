@@ -1,0 +1,37 @@
+<import src="../../template/activity/common-list.wxml" />
+<view class="topic-common-list">
+  <view class="topic-list-item">
+    <view>
+      <image src="/static/images/website-search.webp" class="cover"></image>
+    </view>
+    <view class="topic-content-title">
+      <text>我的加入</text>
+    </view>
+    <view class="topic-content-title-line"></view>
+    <view class="topic-content-brief">
+      <text>共加入{{totalCount}}个发起</text>
+    </view>
+  </view>
+</view>
+
+<view class="container">
+  <view wx:if="{{postsList.length == 0}}">
+    <view class="imgitem">
+      <image src="/static/images/norecord1.png" class="empty_img"></image>
+    </view>
+    <view class="txtitem">
+      <text class="t28rpx">暂无加入</text>
+    </view>
+  </view>
+  <view wx:if="{{postsList.length > 0}}">
+    <view class="index-container">
+      <template is="tempCommonList" data="{{postsList}}" />
+      <view class="loadingmore">
+        <view wx:if="{{!isEmpty}}">
+          <button class="more-button" formType="submit" size="mini" bindtap="loadMore">加载更多...</button>
+        </view>
+        <view class="no-more" wx:if="{{isEmpty}}">---无更多加入---</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,54 +1,51 @@
 {
   "pages":[
+
     
-    "pages/login/login",
     "pages/index/index",
-    "pages/detail/detail",
-    "pages/mylaunch/mylaunch",
+    "pages/start/start",
     "pages/post/post",
-    "pages/album/album",
-    "pages/information/information",
-    "pages/message/message",
+    "pages/detail/detail",
     "pages/logs/logs",
-    "pages/introduction/introduction",
-    "pages/aboutyn/aboutyn"
+    "pages/search/search",
+    "pages/showinmap/showinmap",
+    "pages/message/message",
+    "pages/my/projectbrief/projectbrief",
+    "pages/my/aboutus/aboutus",
+    "pages/my/myjoin/myjoin",
+    "pages/my/mylaunch/mylaunch",
+    "pages/my/mycollection/mycollection"
   ],
   "window":{
-    "navigationBarTextStyle": "black",
-    "navigationBarBackgroundColor": "#ebebeb",
-    "navigationBarTitleText": "一起",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#118fff",
+    "navigationBarTitleText": "出发吧，一起",
     "backgroundColor": "#fff"
-
   },
   "tabBar": {
-   "color": "#444",
-  "selectedColor": "#80bd01",
-  "backgroundColor": "#fff",
-  "borderStyle": "white",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "images/111.png",
-      "selectedIconPath": "images/1HL.png"
-     },
-     {
-      "pagePath": "pages/post/post",
-      "text": "发起",
-      "iconPath": "images/22.png",
-      "selectedIconPath": "images/2HL.png"
-    },
-    {
-      "pagePath": "pages/message/message",
-      "text": "通知",
-      "iconPath": "images/33.png",
-      "selectedIconPath": "images/3HL.png"
-    },
-    {
-      "pagePath": "pages/information/information",
-      "text": "我的",
-      "iconPath": "images/44.png",
-      "selectedIconPath": "images/4HL.png"
-    }]
+    "color": "#9BABBA",
+    "selectedColor": "#495056",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/images/tar-home.png",
+        "selectedIconPath": "static/images/tar-home-on.png"
+      },
+      {
+        "pagePath": "pages/post/post",
+        "text": "发起",
+        "iconPath": "static/images/tar-about.png",
+        "selectedIconPath": "static/images/tar-about-on.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "动态",
+        "iconPath": "static/images/tar-topic.png",
+        "selectedIconPath": "static/images/tar-topic-on.png"
+      }]
   },
   "networkTimeout": {
     "request": 10000,

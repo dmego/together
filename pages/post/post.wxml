@@ -1,84 +1,134 @@
-<import src="../../libs/wetoast/wetoast.wxml"/>
-<form bindsubmit="formSubmit">
-  <view class="page__bd">
-      <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__hd">
-                  <view class="weui-label">主题<span class='red-star'>*</span></view>
-              </view>
-              <view class="weui-cell__bd">
-                   <input bindinput="titleEventFunc" id="title" class="weui-input" name="title" value="{{title}}" placeholder="和我一起做什么" value="{{discount.content.summary || ''}}"/>
-               </view>
-          </view>
-
-          <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__hd">
-                  <view class="weui-label">日期<span class='red-star'>*</span></view>
-              </view>
-              <view class="weui-cell__bd">
-                  <picker  class="weui-input" id="date" name="date" mode="date" value="{{date}}" start="2017-05-01" end="2020-09-01" bindchange="bindDateChange">{{date}}</picker> 
-               </view>
-          </view>
-
-          <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__hd">
-                  <view class="weui-label">时间<span class='red-star'>*</span></view>
-              </view>
-              <view class="weui-cell__bd">
-                   <picker  class="weui-input" id="time" name="time" mode="time" value="{{time}}" bindchange="bindTimeChange">{{time}}</picker>
-               </view>
-          </view>
-
-          <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__hd">
-                  <view class="weui-label">地点<span class='red-star'>*</span></view>
-              </view>
-              <view class="weui-cell__bd">
-                    <text  class="weui-input"  id="positiondata" bindtap="positionChange" value="{{positiondata}}">{{positiondata}}</text>
-               </view>
-          </view>
-
-        </view>
-
-        <view class="weui-cells__title">说明</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" bindblur="contentEventFunc" id="title" id="content" name="content" value="{{content}}" placeholder="详细说明信息，最多200字" style="height: 3.3em" maxlength="200" value="{{discount.content.detail || ''}}"/>
-                    <view class="weui-textarea-counter">0/200</view>
-                </view>
-            </view>
-        </view> 
-
-        <view class="weui-cells__title">添加微信二维码<span class='red-star'>*</span></view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <image wx:if="{{ QRCode !== '' }}" src="{{ QRCode }}" class="image-item"></image>
-                    <view  wx:if="{{ QRCode === ''}}" id="addQRCode" catchtap="chooseQRCode" data-category="album">
-            <image class="image-add-button form-common-style image-item" src="/images/icon/wx_app_scan_code.png"></image>
-          </view>
-                </view>
-            </view>
-        </view>
-
-         <view class="weui-cells__title">添加照片信息<span class='red-star'>*</span></view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <image wx:for="{{ pictures }}" src="{{ item }}" wx:key="{{ index }}" class="image-item"></image>
-                    <view wx:if="{{pictures.length < 3}}" id="addImageButton"  bindtap="chooseImage">
-                    <image class="image-add-button form-common-style image-item" src="/images/icon/wx_app_upload_image.png"></image>
-                    
-                    </view>
-                </view>
-            </view>
-        </view>
-    </view>        
-    <view >
-        <button formType="submit" type="primary" class="submit form-common-style"> 发布 </button>
-        <button formType="reset" type="primary" class="submit form-common-style"> 重置 </button>
+<!-- 新建活动 -->
+<view class="add-page">
+  <form bindsubmit="submitForm">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
+    <view class="mod-a">
+      <!-- 活动主题 -->
+      <view class="mod t-name">
+        <text class="key">活动名称</text>
+        <input name="title" class="input" maxlength="100" placeholder="请输入活动名称" value="{{title}}" />
+        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+      </view>
     </view>
-</form>
-<!-- wetoast -->
-<template is="wetoast" data="{{...__wetoast__}}"/>
+
+
+
+    <view class="mod-a mt20">
+      <!-- 活动类别 -->
+      <view class="mod t-sign-time">
+        <text class="key">活动类别</text>
+        <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{types}}">
+          <view class="value" name="types">{{types[typeIndex]}}
+            <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 活动地点 -->
+      <view class="mod t-address" bindtap="chooseLocation">
+        <text class="key">活动地点</text>
+        <text name="address" class="value" bindtap="addressChange" value="{{address}}">{{address}}</text>
+        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+      </view>
+
+      <!-- 有效时间 -->
+      <view class="mod t-sign-time">
+        <text class="key">有效时间</text>
+        <picker mode="date" value="{{date}}" start="{{date}}" end="2020-09-01" bindchange="bindDateChange">
+          <view class="value" name="endtime">{{date}}
+            <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 限制人数 -->
+      <view class="mod  t-early">
+        <text class="key">限制人数</text>
+        <switch type="switch" bindchange="switch1Change" name="switchHide" />
+      </view>
+
+      <!-- 人数设置 -->
+      <view wx:if="{{peopleHide}}">
+        <view class="mod t-name">
+          <text class="key">人数设置</text>
+          <input name="peoplenum" type="number" class="input" maxlength="100" placeholder='请输入人数' value="{{peoplenum}}" />
+          <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+        </view>
+      </view>
+    </view>
+
+    <!-- 活动内容 -->
+    <view class="mod-a mt20">
+      <view class="mod-big my-nick">
+        <textarea name="content" class="weui-textarea" placeholder="请输入活动内容" value="{{content}}" style="height: 7em" bindinput="bindTextAreaChange" maxlength="{{noteMaxLen}}" />
+        <view class="chnumber">{{noteNowLen}}/{{noteMaxLen}}</view>
+      </view>
+    </view>
+    <view class="add_pic" bindtap="uploadPic" wx-if="{{!isSrc}}">
+      <view>添加图片（选）</view>
+    </view>
+    <view wx:if="{{isSrc}}" class="image_box">
+      <view class="picPre">
+        <image src="{{src}}" mode="aspectFit"></image>
+        <view bindtap="clearPic"></view>
+      </view>
+    </view>
+    <view class="mod-a mt20"></view>
+    <view class="mod-a mt20" wx:if="{{showInput}}">
+      <!-- 真实姓名 -->
+      <view class="mod t-name">
+        <text class="key">真实姓名</text>
+        <input name="realname" class="input" maxlength="100" placeholder="请输入真实姓名" value="{{realname}}"/>
+        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+      </view>
+      <view class="mod-a"></view>
+      <view class="mod t-name">
+        <picker name="contactWay" bindchange="bindAccountChange" value="{{accountIndex}}" range="{{accounts}}">
+          <view class="select">{{accounts[accountIndex]}}</view>
+        </picker>
+        <input name="contactValue" class="input" placeholder="请输入号码" value="{{contactValue}}"/>
+        <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
+      </view>
+    </view>
+
+    <view class="mod-a mt20">
+      <checkbox-group bindchange="bindAgreeChange">
+        <label class="weui-agree" for="weuiAgree">
+          <view class="weui-agree__text">
+            <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+            <view class="weui-agree__checkbox-icon">
+              <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+            </view>
+            阅读并同意
+            <view bindtap="showNotice" class="weui-agree__link">
+              《发起须知》</view>
+          </view>
+        </label>
+      </checkbox-group>
+      <view class="submit-btn">
+        <button class='button' loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">发起</button>
+      </view>
+    </view>
+  </form>
+</view>
+
+<view class="notice" id="notice" wx:if="{{notice_status}}" bindtap="tapNotice">
+        <view class="box">
+          <view class="box-hd">
+            <text class="box-title">发起须知</text>
+            <image class="box-close" src="/static/images/more/close.png" bindtap="hideNotice"></image>
+          </view>
+          <view class="box-bd">
+            <view class="notice-q">1、为什么需要真实姓名与联系方式？</view>
+            <view class="notice-a">
+              <text>本软件的业务思想是：线上报名，线下联系；填写真实有效的联系信息更加有利于活动的开展</text>
+              <text>其中联系方式有三种选择，分别是微信号，QQ号以及手机号，这三种联系方式在目前生活中是最为普遍的</text>
+              <text>当有用户报名您的发起时，即可查看您填写的联系信息，以便加入者与您联系</text>    
+            </view>
+            <view class="notice-q">2、发起内容的有哪些限制？</view>
+            <view class="notice-a">
+              <text>发起内容应该在法律允许的范围内，如果发起内容违反了相关的法律法规，一经发现，本软件有权限对该发起进行删除操作</text>
+            </view>
+          </view>
+        </view>
+      </view>
