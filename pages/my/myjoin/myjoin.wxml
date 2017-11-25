@@ -2,7 +2,7 @@
 <view class="topic-common-list">
   <view class="topic-list-item">
     <view>
-      <image src="/static/images/website-search.webp" class="cover"></image>
+      <image src="/static/images/website-search.png" class="cover"></image>
     </view>
     <view class="topic-content-title">
       <text>我的加入</text>

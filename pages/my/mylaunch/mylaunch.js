@@ -101,7 +101,7 @@ Page({
           if (actpic) {
             _url = results[i].get("actpic").url;
           } else {
-            _url = "/static/images/default.webp";
+            _url = "/static/images/default.png";
           }
           var jsonA;
           jsonA = {

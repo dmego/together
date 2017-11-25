@@ -160,7 +160,7 @@ Page({
           if(actpic){
             _url = results[i].get("actpic")._url;
           }else {
-            _url = "/static/images/default.webp";
+            _url = "/static/images/default.png";
           }
           var publisherName = results[i].get("publisher").nickname;
           var publisherPic = results[i].get("publisher").userPic;
@@ -235,7 +235,7 @@ Page({
           if (actpic) {
             _url = results[i].get("actpic")._url;
           } else {
-            _url = "http://ovasw3yf9.bkt.clouddn.com/blog/171120/mAK096gl0I.png?imageslim";
+            _url = "/static/images/default.png";
           }
           var publisherName = results[i].get("publisher").nickname;
           var publisherPic = results[i].get("publisher").userPic;

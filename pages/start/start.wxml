@@ -4,7 +4,7 @@
     <image class="remind-img" src="/static/images/more/loading.gif"></image>
   </view>
   <block wx:else>
-    <image class="title" src="/static/images/more/title8.webp"></image>
+    <image class="title" src="/static/images/more/title8.png"></image>
     <view class="content">
       <view class="hd" style="transform:rotateZ({{angle}}deg);">
         <image class="logo" src="{{userInfo.avatarUrl}}"></image>
@@ -12,7 +12,7 @@
         <image class="wave wave-bg" src="/static/images/more/wave.png" mode="aspectFill"></image>
       </view>
       <view class="bd">
-         <image class="smalltitle" src="/static/images/more/confirm-word1.webp"></image>
+         <image class="smalltitle" src="/static/images/more/confirm-word1.png"></image>
         <view class="confirm-btn" bindtap='goToIndex'>
           <text >立即体验</text>
         </view>

@@ -3,7 +3,7 @@
    它基于 Bmob 作为后端云服务
    由SmartCoder团队开发并维护
 </text>
-<image src="/static/images/smart.webp" mode="widthFix" />
+<image src="/static/images/smart.png" mode="widthFix" />
 <view class="copyright">
 <text>石家庄铁道大学SmartCoder团队</text>
 <view><text>Copyright @ {{year}} All Rights Reserved</text></view>

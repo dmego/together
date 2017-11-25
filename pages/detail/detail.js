@@ -215,7 +215,7 @@ Page({
                   url = result[0].get("actpic")._url;
                 }
                 else {
-                  url = "/static/images/default.webp";
+                  url = "/static/images/default.png";
                 }
                 if (publisher.id == ress.data) {
                   that.setData({

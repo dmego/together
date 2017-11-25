@@ -90,7 +90,7 @@
         <view class="icon-text ">
           <span>步数</span>
         </view>
-        <text>1000</text>
+        <text>2543</text>
       </view>
       <view class="list-box " bindtap=" ">
         <view class="icon-text ">
@@ -113,7 +113,7 @@
         <span>我的收藏</span>
       </view>
       <view class="itemself" bindtap="click_projectBrief" data-index="4">
-        <image src="/static/images/icon/specialty.webp" class="itemself_ico"></image>
+        <image src="/static/images/icon/specialty.png" class="itemself_ico"></image>
         <span>项目简介</span>
       </view>
       <view class="itemself" bindtap="click_aboutUs" data-index="5">
