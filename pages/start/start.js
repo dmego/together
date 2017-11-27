@@ -9,7 +9,6 @@ Page({
   },
   
   goToIndex:function(){
-    console.log(111);
     wx.switchTab({
       url: '/pages/index/index',
     });

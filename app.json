@@ -1,19 +1,22 @@
 {
   "pages":[
-
+ 
     "pages/start/start",
     "pages/index/index",
     "pages/post/post",
     "pages/detail/detail",
-    "pages/logs/logs",
     "pages/search/search",
     "pages/showinmap/showinmap",
     "pages/message/message",
+    "pages/logs/logs",
     "pages/my/projectbrief/projectbrief",
     "pages/my/aboutus/aboutus",
     "pages/my/myjoin/myjoin",
     "pages/my/mylaunch/mylaunch",
-    "pages/my/mycollection/mycollection"
+    "pages/my/mycollection/mycollection",
+    "pages/my/issues/issues",
+    "pages/my/more/more",
+    "pages/my/logs/logs"
   ],
   "window":{
     "navigationBarTextStyle": "white",

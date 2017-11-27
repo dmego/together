@@ -1,0 +1,234 @@
+<!--about.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="black-cover"></view>
+    <image class="logo" src="/static/images/more/logo.png"></image>
+    <image class="title" src="/static/images/more/title8.png"></image>
+  </view>
+  <view class="content">
+    <view class="version">
+      <view class="version-title">
+        <text class="title-name">出发吧一起</text>
+        <text class="version-text">{{version}}</text>
+        <text class="version-text">内测</text>
+      </view>
+      <view>
+        <text class="version-log-link update-log">开发日志</text>
+      </view>
+    </view>
+    <view class="log-list">
+    <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.1.0 公测版</text>
+          <text class="desc-time">2017.11.26</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <view class="desc-list">
+          <text class="desc-list-item">全面替换 webp 格式图片，修复无法显示的问题</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">添加反馈建议功能</text>
+          <text class="desc-list-item">添加更多信息模块，加入开发日志已经启动画面选项</text>
+           <text class="desc-list-item">提交审核，开启公测</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.0.9 内测版</text>
+          <text class="desc-time">2017.11.25</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <view class="desc-list">
+          <text class="desc-list-item">修复消息提醒出现错误的问题</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">压缩程序所有的静态图片，添加 webp 格式图片</text>
+          <text class="desc-list-item">全面优化界面颜色的统一，图标大小的统一</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.0.8 内测版</text>
+          <text class="desc-time">2017.11.24</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <view class="desc-list">
+          <text class="desc-list-item">修复我的加入，我的发起，我的收藏三个界面的分页</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">搜索的搜索关键字和热门搜索的自动显示</text>
+          <text class="desc-list-item">使用js 完成模糊查询</text>
+          <text class="desc-list-item">消息通知模块实现下拉刷新</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.0.7 内测版</text>
+          <text class="desc-time">2017.11.23</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <view class="desc-list">
+          <text class="desc-list-item">修复首页无法刷新</text>
+          <text class="desc-list-item">修改首页轮播图的切换bug</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">加入分享功能，只能在活动详情页面</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.0.6 内测版</text>
+          <text class="desc-time">2017.11.21</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <view class="desc-list">
+          <text class="desc-list-item">启动动画的修改</text>
+          <text class="desc-list-item">修改消息按照时间先后显示</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">实现地图模式查看</text>
+          <text class="desc-list-item">修改发布时间显示为几秒前</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.0.5 内测版</text>
+          <text class="desc-time">2017.11.20</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <view class="desc-list">
+          <text class="desc-list-item">启动动画的标题修改</text>
+          <text class="desc-list-item">修复消息为空的界面显示</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">实现搜索功能</text>
+          <text class="desc-list-item">更新活动类型颜色</text>
+           <text class="desc-list-item">修复地图显示点的问题</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.0.4 内测版</text>
+          <text class="desc-time">2017.11.18</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <view class="desc-list">
+          <text class="desc-list-item">首页轮播图为点赞数最多的前3个</text>
+          <text class="desc-list-item">用户表删除详细地址，增加经度与纬度</text>
+          <text class="desc-list-item">修复图片未添加的情况,显示默认图片</text>
+           <text class="desc-list-item">默认自己不能加入自己的发起</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">活动表进行调整</text>
+          <text class="desc-list-item">用户表删除详细地址，增加经度与纬度</text>
+        </view>
+
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.0.3 内测版</text>
+          <text class="desc-time">2017.11.16</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">活动表加入参加人数，参加人数集合的字段，方便活动管理</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.0.2 内测版</text>
+          <text class="desc-time">2017.11.14</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">完成联系表录入功能</text>
+          <text class="desc-list-item">实现收藏与加入功能</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.0.1 内测版</text>
+          <text class="desc-time">2017.11.11</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <view class="desc-list">
+          <text class="desc-list-item">修复点赞无法更新点赞数的bug</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">加入联系功能</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v2.0.0 内测版</text>
+          <text class="desc-time">2017.11.10</text>
+        </view>
+        <text class="desc-content">第二版开启内测</text>
+        <view class="desc-list">
+          <text class="desc-list-item">变更程序的部分业务逻辑</text>
+          <text class="desc-list-item">全面更新界面显示效果</text>
+          <text class="desc-list-item">将 Bmob 后端云作为数据存储和处理平台</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v1.1.2 内测版</text>
+          <text class="desc-time">2017.7.12</text>
+        </view>
+        <text class="desc-content">修复BUG</text>
+        <view class="desc-list">
+          <text class="desc-list-item">修复美好回忆无法显示问题</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">更多其他细节优化</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v1.1.0 公测版</text>
+          <text class="desc-time">2017.7.11</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">优化代码</text>
+          <text class="desc-list-item">静态图片进行压缩处理</text>
+          <text class="desc-list-item">提交审核，上线公测</text>
+        </view>
+
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v1.0.2 内测版</text>
+          <text class="desc-time">2017.7.10</text>
+        </view>
+        <text class="desc-content">优化完善</text>
+        <view class="desc-list">
+          <text class="desc-list-item">更新关于界面并实现其功能</text>
+          <text class="desc-list-item">添加通知界面忙，目前为静态</text>
+        </view>
+      </view>
+      <view class="describe">
+        <view class="desc-title">
+          <text class="desc-v">v1.0.1 内测版</text>
+          <text class="desc-time">2017.7.5</text>
+        </view>
+        <text class="desc-content">开启内测</text>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <text>石家庄铁道大学 smartCoder 团队</text>
+    <text>Copyright @ {{year}} All Rights Reserved</text>
+  </view>
+</view>

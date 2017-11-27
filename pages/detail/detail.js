@@ -843,14 +843,14 @@ Page({
     var join = that.data.join;
     if ((that.data.peoplenum - that.data.joinnumber) <= 0) { //如果人加入满了
       wx.showModal({
-        title: '人数已经满了',
+        title: '提示',
         content: '此活动参加人数已满',
         showCancel: true,
       })
     } else if (join == "3") {
       wx.showModal({
-        title: '默认加入自己的发起',
-        content: '',
+        title: '提示',
+        content: '默认加入自己的发起',
       })
     } else if (join == "0") {//如果没有加入，弹出联系表单
       this.setData({
@@ -858,8 +858,8 @@ Page({
       });
     } else if (join == "1") { //如果已经加入，则不弹出表单，点击取消加入（删除有关消息）
       wx, wx.showModal({
-        title: '确定取消加入吗',
-        content: '',
+        title: '提示',
+        content: '确定取消加入吗？',
         showCancel: true,
         showCancel: true,
         confirmColor: "#a07c52",
@@ -1187,8 +1187,8 @@ Page({
     var favo = that.data.favo;
     if (favo == "3") {
       wx.showModal({
-        title: '不能收藏自己的发起',
-        content: '',
+        title: '提示',
+        content: '不能收藏自己的发起',
       })
       return;
     } else if (favo == "0") {

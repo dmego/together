@@ -1,0 +1,33 @@
+<!--more.wxml-->
+<view class="container">
+  <view class="more-list">
+  
+    <navigator url="/pages/my/logs/logs" class="issue-link">
+      <view class="more-btn">
+        <image class="btn-icon" src="/static/images/icon/append.png"></image>
+        <text class="btn-text">开发日志</text>
+        <view class="btn-open">
+          <image class="btn-enter" src="/static/images/more/enter.png"></image>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="/pages/my/aboutus/aboutus" class="about-link">
+      <view class="more-btn">
+        <image class="btn-icon" src="/static/images/icon/about.png"></image>
+        <text class="btn-text">关于我们</text>
+        <view class="btn-open">
+            <image class="btn-enter" src="/static/images/more/enter.png"></image>
+        </view>
+      </view>
+    </navigator>
+    <navigator url="/pages/start/start" class="issue-link">
+      <view class="more-btn">
+        <image class="btn-icon" src="/static/images/icon/start.png"></image>
+        <text class="btn-text">启动画面</text>
+        <view class="btn-open">
+          <image class="btn-enter" src="/static/images/more/enter.png"></image>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

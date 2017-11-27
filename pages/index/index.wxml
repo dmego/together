@@ -1,5 +1,5 @@
 <!-- index.wxml -->
-<view class="mpage {{!ui.tStart? 'withAnimate': ''}}" style="left:{{ui.offsetLeft}}px;width: {{ui.windowWidth}}px" bindtouchstart="handlerStart" catchtouchmove="handlerMove" bindtouchcancel="handlerCancel" bindtouchend="handlerEnd" bindtap="handlerPageTap">
+<view class="mpage {{!ui.tStart? 'withAnimate': ''}}" style="left:{{ui.offsetLeft}}px;width: {{ui.windowWidth}}px;" bindtouchstart="handlerStart" catchtouchmove="handlerMove"  bindtouchcancel="handlerCancel" bindtouchend="handlerEnd" bindtap="handlerPageTap">
   <scroll-view bindscroll="" scroll-y style="height: 100%;">
     <view class="search">
       <view catchtap="handlerAvatarTap" class="avatar">
@@ -116,9 +116,13 @@
         <image src="/static/images/icon/specialty.png" class="itemself_ico"></image>
         <span>项目简介</span>
       </view>
-      <view class="itemself" bindtap="click_aboutUs" data-index="5">
-        <image src="/static/images/icon/about.png " class="itemself_ico"></image>
-        <span>关于我们</span>
+      <view class="itemself" bindtap="click_Tick" data-index="5">
+        <image src="/static/images/icon/tick2.png " class="itemself_ico"></image>
+        <span>反馈建议</span>
+      </view>
+       <view class="itemself" bindtap="click_more" data-index="6">
+        <image src="/static/images/icon/plus.png " class="itemself_ico"></image>
+        <span>更多信息</span>
       </view>
     </view>
     <view class="h10"></view>

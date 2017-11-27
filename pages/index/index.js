@@ -26,6 +26,7 @@ Page({
       menuWidth: 0,
       offsetLeft: 0,
       tStart: true
+      
     },
     buttonClicked: false, //是否点击跳转
     //--------首页显示内容---------
@@ -399,6 +400,27 @@ Page({
       });
     }
   },
+
+  //进入反馈建议
+  click_Tick:function(){
+    if (!this.buttonClicked) {
+      util.buttonClicked(this);
+      wx.navigateTo({
+        url: '/pages/my/issues/issues',
+      });
+    }
+  },
+
+  //进入更多信息
+  click_more:function(){
+    if (!this.buttonClicked) {
+      util.buttonClicked(this);
+      wx.navigateTo({
+        url: '/pages/my/more/more',
+      });
+    }
+  },
+
   //进入关于我们
   click_aboutUs: function () {
     if (!this.buttonClicked) {

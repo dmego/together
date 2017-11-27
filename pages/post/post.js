@@ -214,8 +214,8 @@ Page({
     var that = this;
     if (that.data.showInput == false) {
       wx.showModal({
-        title: '请先阅读《发起须知》',
-        content: '仔细阅读"须知"后请勾选同意'
+        title: '提示',
+        content: '请先阅读《发起须知》'
       })
       return;
     }

@@ -5,7 +5,7 @@ var common = require("utils/common.js");
 const __utils = require('utils/util')
 Bmob.initialize("9f1068e931203bfa908f26353f9d8080", "396e699e6cda7e452ef36e9effe5ef35");
 App({
-
+  version: 'v2.1.0', //版本号
   onLaunch: function () {
     var that = this;
     //调用系统API获取设备的信息
@@ -63,6 +63,7 @@ App({
                             user.set("userPic", avatarUrl);
                             user.set("userData", userData);
                             user.set('sex', sex);
+                            user.set('feednum',0);
                             user.signUp(null, {
                               success: function (result) {
                                 console.log('注册成功');
