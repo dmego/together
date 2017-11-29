@@ -10,7 +10,7 @@
       <view class="version-title">
         <text class="title-name">出发吧一起</text>
         <text class="version-text">{{version}}</text>
-        <text class="version-text">内测</text>
+        <text class="version-text">公测</text>
       </view>
       <view>
         <text class="version-log-link update-log">开发日志</text>
@@ -29,7 +29,7 @@
         <text class="desc-content">优化完善</text>
         <view class="desc-list">
           <text class="desc-list-item">添加反馈建议功能</text>
-          <text class="desc-list-item">添加更多信息模块，加入开发日志已经启动画面选项</text>
+          <text class="desc-list-item">添加更多信息模块，加入开发日志以及启动画面选项</text>
            <text class="desc-list-item">提交审核，开启公测</text>
         </view>
       </view>
