@@ -70,6 +70,7 @@ Page({
     }
   },
 
+
   onLoad(t) {
     var self = this;
     this.getAll();

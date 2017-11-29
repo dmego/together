@@ -64,7 +64,6 @@ Page({
     });
   },
 
-
   //获取首页列表文章
   fetchPostsData: function (data, endpage) {
     var self = this;
@@ -77,6 +76,7 @@ Page({
     query.equalTo("currentUser", wx.getStorageSync("user_id")); //查询出联系表中是我的记录
     query.include("event");
     query.descending("createAt");
+    query.include("currentUser");
     query.find({
       success: function (results) {
         for (var i = 0; i < results.length; i++) {
@@ -92,7 +92,7 @@ Page({
           var liker = results[i].get("event").liker;
           var isLike = 0;
           var commentnum = results[i].get("event").commentnum;
-          var id = results[i].id;
+          var id = results[i].get("event").objectId;
           var createdAt = results[i].createdAt;
           var pubtime = util.getDateDiff(createdAt);
           var publisherName = results[i].get("currentUser").nickname;
@@ -124,6 +124,7 @@ Page({
             "is_liked": isLike || ''
           }
           molist.push(jsonA);
+          console.log(molist);
         }
         self.onSetData(molist, self.data.currentPage);
         

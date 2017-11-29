@@ -74,6 +74,7 @@ Page({
     query.equalTo("favor", wx.getStorageSync("user_id")); //查询出联系表中是我的记录
     query.include("event");
     query.descending("createAt");
+    query.include("favor");
     query.find({
       success: function (results) {
         for (var i = 0; i < results.length; i++) {
@@ -89,7 +90,7 @@ Page({
           var liker = results[i].get("event").liker;
           var isLike = 0;
           var commentnum = results[i].get("event").commentnum;
-          var id = results[i].id;
+          var id = results[i].get("event").objectId;
           var createdAt = results[i].createdAt;
           var pubtime = util.getDateDiff(createdAt);
           var publisherName = results[i].get("favor").nickname;

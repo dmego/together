@@ -76,6 +76,7 @@ Page({
     query.skip(3 * self.data.currentPage);
     query.equalTo("publisher", wx.getStorageSync("user_id")); //查询出联系表中是我的记录
     query.descending("createAt");
+    query.include("publisher");
     query.find({
       success: function (results) {
         for (var i = 0; i < results.length; i++) {

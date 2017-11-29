@@ -86,8 +86,8 @@
       </view>
     </view>
     <view style='background-color: #fff;' class='bottom-box'>
-      <view class="list-box " bindtap=" ">
-        <view class="icon-text ">
+      <view class="list-box">
+        <view class="icon-text">
           <span>步数</span>
         </view>
         <text>2543</text>
