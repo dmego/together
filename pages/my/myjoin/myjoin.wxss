@@ -92,7 +92,7 @@
 /*topic list*/
 
 .topic-common-list {
-  /* padding:30rpx 30rpx; */
+  /*padding:30rpx 30rpx;*/ 
 }
 
 .topic-list-item {

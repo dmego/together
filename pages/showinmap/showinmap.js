@@ -114,6 +114,7 @@ Page({
     var molist = new Array();
     var Diary = Bmob.Object.extend("Events");
     var query = new Bmob.Query(Diary);
+    query.equalTo("isShow", 1); //只统计公开显示的活动
     query.include("publisher");
     // 查询所有数据
     query.find({
@@ -127,6 +128,7 @@ Page({
           }
           var acttype = results[i].get("acttype");
           var actcolor = that.getbgColor(acttype);
+          var isShow = results[i].get("isShow");
           var address = results[i].get("address");
           var longitude = results[i].get("longitude");
           var latitude = results[i].get("latitude");
@@ -137,6 +139,7 @@ Page({
             "title": title || '', 
             "pubid": publisherId || '', 
             "acttype": acttype || '',
+            "isShow": isShow,
             "actcolor": actcolor || '',
             "acttypename": acttypename || '',
             "latitude": latitude || '',

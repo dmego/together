@@ -227,11 +227,6 @@ swiper-item, swiper-item image {
 }
 
 .horizontal .tag_1 {
-  background: #ffac00;
-  color: #fff;
-}
-
-.horizontal .tag_1 {
   background: #fe6c01;
   color: #fff;
 }

@@ -96,6 +96,18 @@ page {
   border-bottom: 1rpx solid rgb(230, 230, 230);
 }
 
+.statustag_0 {
+  color: #fe0701;
+}
+
+.statustag_1 {
+  color: #0e53a6;
+}
+
+.statustag_2 {
+  color:  #a54a00;
+}
+
 .detail_input {
   /*活动地点、活动时间等item*/
   position: relative;
@@ -347,6 +359,11 @@ float: right;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+}
+.textarea1_case_sign2 {
+  margin-right: 50rpx;
+  margin-left: 50rpx;
   padding: 0;
 }
 
@@ -679,6 +696,14 @@ float: right;
   top: 101%;
   box-shadow:0 -2px 3px #888888;
 }
+.addForm2 {
+  background-color: #ffffff;
+  height: 100px;
+  width: 100%;
+  padding-top: 20px;
+  top: 101%;
+  box-shadow:0 -2px 3px #888888;
+}
 .todoName {
   position: relative;
   color: #37bc9b;
@@ -788,7 +813,6 @@ float: right;
 /*左边图标*/
 
 /*俱乐部图标*/
-
 .left_img_view {
   width: 25%;
   padding-top: 29rpx;
@@ -811,7 +835,6 @@ float: right;
 }
 
 /*文字类似图标*/
-
 .icon_text {
   font-size: 26rpx;
   text-align: center;
@@ -857,7 +880,6 @@ float: right;
 }
 
 /*右边图标*/
-
 .right_view {
   padding: 29rpx 30rpx 0 0;
   font-size: 34rpx;
@@ -881,7 +903,6 @@ float: right;
 }
 
 /*字体*/
-
 .bigsize1 {
   margin-top: 10rpx;
   font-size: 22rpx;
@@ -1155,4 +1176,15 @@ float: right;
 }
 .apply-time{
   margin:14rpx 0 13rpx;
+}
+
+/*改变活动状态*/
+.change-select{
+  position:relative;
+  padding-left:15px;
+  padding-right:30px;
+  height:2.58823529em;
+  min-height:2.58823529em;
+  line-height:2.58823529em;
+  border-left:1rpx solid #d9d9d9;
 }

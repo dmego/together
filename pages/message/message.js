@@ -156,6 +156,8 @@ Page({
             var message = "加入了你的发起";
           } else if (behavior == 6) {
             var message = "取消加入了你的发起";
+          } else if (behavior == 7){
+            var message = "修改了联系信息";
           }
           var wid = result[i].get("wid"); //活动的id
           var fid = result[i].get("fid");//活动发布者的id

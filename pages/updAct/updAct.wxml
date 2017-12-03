@@ -42,7 +42,7 @@
       <!-- 限制人数 -->
       <view class="mod  t-early">
         <text class="key">限制人数</text>
-        <switch type="switch" bindchange="switch1Change" name="switchHide" />
+        <switch type="switch" bindchange="switch1Change" name="switchHide" checked="{{switchp}}"/>
       </view>
 
       <!-- 人数设置 -->
@@ -67,16 +67,16 @@
     </view>
     <view wx:if="{{isSrc}}" class="image_box">
       <view class="picPre">
-        <image src="{{src}}" mode="aspectFit"></image>
+        <image src="{{src}}" mode="aspectFit" bindtap='seeActBig'></image>
         <view bindtap="clearPic"></view>
       </view>
     </view>
     <view class="mod-a mt20"></view>
-    <view class="mod-a mt20" wx:if="{{showInput}}">
+    <view class="mod-a mt20">
       <!-- 真实姓名 -->
       <view class="mod t-name">
         <text class="key">真实姓名</text>
-        <input name="realname" class="input" maxlength="100" placeholder="请输入真实姓名" value="{{realname}}"/>
+        <input name="realname" class="input" maxlength="100" placeholder="请输入真实姓名" value="{{realname}}" />
         <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
       </view>
       <view class="mod-a"></view>
@@ -84,59 +84,24 @@
         <picker name="contactWay" bindchange="bindAccountChange" value="{{accountIndex}}" range="{{accounts}}">
           <view class="select">{{accounts[accountIndex]}}</view>
         </picker>
-        <input name="contactValue" class="input" placeholder="请输入号码" value="{{contactValue}}"/>
+        <input name="contactValue" class="input" placeholder="请输入号码" value="{{contactValue}}" />
         <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
       </view>
       <view class="add_pic t-code" bindtap="uploadCodePic" wx-if="{{!isCodeSrc}}">
-      <view class='code'>上传活动群二维码（选）</view>
-    </view>
-    <view wx:if="{{isCodeSrc}}" class="image_box">
-      <view class="picPre">
-        <image src="{{codeSrc}}" mode="aspectFit"></image>
-        <view bindtap="clearCodePic"></view>
+        <view class='code'>上传活动群二维码（选）</view>
+      </view>
+      <view wx:if="{{isCodeSrc}}" class="image_box">
+        <view class="picPre">
+          <image src="{{codeSrc}}" mode="aspectFit" bindtap='seeqrCodeBig'></image>
+          <view bindtap="clearCodePic"></view>
+        </view>
       </view>
     </view>
-    </view>
 
-    <view class="mod-a mt20">
-      <checkbox-group bindchange="bindAgreeChange">
-        <label class="weui-agree" for="weuiAgree">
-          <view class="weui-agree__text">
-            <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
-            <view class="weui-agree__checkbox-icon">
-              <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
-            </view>
-            阅读并同意
-            <view bindtap="showNotice" class="weui-agree__link">
-              《发起须知》</view>
-          </view>
-        </label>
-      </checkbox-group>
+    <view class="mod-a">
       <view class="submit-btn">
-        <button class='button' loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">发起</button>
+        <button class='button' loading="{{isLoading}}" hover-start-time="200" disabled="{{isdisabled}}" formType="submit">修改</button>
       </view>
     </view>
   </form>
 </view>
-
-<view class="notice" id="notice" wx:if="{{notice_status}}" bindtap="tapNotice">
-        <view class="box">
-          <view class="box-hd">
-            <text class="box-title">发起须知</text>
-            <image class="box-close" src="/static/images/more/close.png" bindtap="hideNotice"></image>
-          </view>
-          <view class="box-bd">
-            <view class="notice-q">1、为什么需要填写真实姓名与联系方式等信息？</view>
-            <view class="notice-a">
-              <text>线上报名，线下联系；填写真实有效的联系信息更加有利于活动的开展</text>
-              <text>联系方式有三种选择，分别是微信号，QQ号以及手机号，这三种联系方式在目前生活中是最为普遍的</text>         
-              <text>当有用户报名您的发起时，即可查看您填写的联系信息，以便加入者与您联系,没有加入的用户无法查看您的联系信息</text>    
-               <text>活动的群二维码主要用于活动的交流与联系,可以视活动的大小上传或者不上传</text>
-            </view>
-            <view class="notice-q">2、发起内容的有哪些限制？</view>
-            <view class="notice-a">
-              <text>发起内容应该在法律允许的范围内，如果发起内容违反了相关的法律法规，一经发现，本软件有权限对该发起进行删除操作</text>
-            </view>
-          </view>
-        </view>
-      </view>

@@ -3,6 +3,10 @@ var app = getApp()
 var Bmob = require("../../utils/bmob.js");
 var common = require('../template/getCode.js')
 var that;
+var optionId;
+var publisherId;
+var contactId;
+var eventMoreId;
 var myDate = new Date();
 //格式化日期
 function formate_data(myDate) {
@@ -70,6 +74,8 @@ Page({
    */
   onLoad: function (options) {
     that = this;
+    optionId = options.actid;
+    publisherId = options.pubid;
     that.setData({//初始化数据
       src: "",
       isSrc: false,
@@ -79,6 +85,53 @@ Page({
       loading: true,
       isdisabled: false
     })
+    var Diary = Bmob.Object.extend("Events");
+    var query = new Bmob.Query(Diary);
+    query.equalTo("objectId", optionId);
+    query.include("publisher");
+    query.find({
+      success: function (result) {
+        var title = result[0].get("title");
+        var content = result[0].get("content");
+        var acttype = result[0].get("acttype");
+        var endtime = result[0].get("endtime");
+        var address = result[0].get("address");
+        var peoplenum = result[0].get("peoplenum");
+        if (peoplenum > 0) {
+          that.setData({
+            switchp: true,
+            peopleHide: true
+          })
+        }
+        console.log(peoplenum);
+        var url;
+        if (result[0].get("actpic")) {
+          url = result[0].get("actpic")._url;
+          that.setData({
+            isSrc: true,
+          })
+        }
+        else {
+          url = null;
+        }
+        that.setData({
+          title: title,
+          typeIndex: acttype - 1,
+          address: address,
+          date: endtime,
+          peoplenum: peoplenum,
+          content: content,
+          src: url,
+          actUrl: url
+        })
+        that.selfInfo(result[0]);
+        that.eventMore(result[0]);
+      },
+      error: function (error) {
+        console.log(error);
+      }
+    })
+
   },
 
   /**
@@ -108,6 +161,66 @@ Page({
     }
   },
 
+  //--------------查询活动扩展信息------------------
+  eventMore: function (event) {
+    var Diary = Bmob.Object.extend("EventMore");
+    var query = new Bmob.Query(Diary);
+    query.equalTo("event", event);
+    query.find({
+      success: function (result) {
+        var id = result[0].id;
+        eventMoreId = id;//活动信息扩展表数据Id
+        var statusname = result[0].get("Statusname");
+        var actstatus = result[0].get("Status");
+        var url;
+        var qrcode = result[0].get("qrcode");
+        if (qrcode) {
+          url = result[0].get("qrcode")._url;
+          that.setData({
+            isCodeSrc: true,
+          })
+        }
+        else {
+          url = null;
+        }
+        that.setData({
+          statusname: statusname,
+          actstatus: actstatus,
+          codeSrc: url,
+          QrUrl: url
+        })
+      }
+    })
+  },
+  //获取活动的加入详情信息
+  selfInfo: function (event) {
+    var Contacts = Bmob.Object.extend("Contacts");
+    var queryJoin = new Bmob.Query(Contacts);
+    queryJoin.equalTo("event", event);
+    var me = new Bmob.User();
+    me.id = publisherId;
+    queryJoin.include("publisher", me);
+    queryJoin.find({
+      success: function (result) {
+        var id = result[0].id;
+        contactId = id; //联系表中的数据Id
+        var adminname = result[0].get("realname"); //加入的人的真实姓名
+        var adcontactWay = result[0].get("contactWay"); //联系方式名称
+        var adcontactValue = result[0].get("contactValue"); //联系方式
+        that.setData({
+          realname: adminname,
+          accountIndex: getContactIndex(adcontactWay),
+          contactValue: adcontactValue,
+          loading: true
+        })
+      },
+      error: function (error) {
+        common.dataLoadin(error, "loading");
+        console.log(error);
+      }
+    })
+  },
+
   //上传活动图片
   uploadPic: function () {//选择图标
     wx.chooseImage({
@@ -118,8 +231,9 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         that.setData({
+          upnew: true,//上传了新图片
           isSrc: true,
-          src: tempFilePaths
+          src: tempFilePaths,
         })
       }
     })
@@ -143,6 +257,7 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         that.setData({
+          upqrnew: true,
           isCodeSrc: true,
           codeSrc: tempFilePaths
         })
@@ -177,6 +292,7 @@ Page({
       date: e.detail.value
     })
   },
+
   //改变活动类别
   bindTypeChange: function (e) {
     this.setData({
@@ -195,6 +311,7 @@ Page({
           address: res.name,
           longitude: res.longitude, //经度
           latitude: res.latitude,//纬度
+          upadnew: true, //更新了地址
         })
         if (e.detail && e.detail.value) {
           this.data.address = e.detail.value;
@@ -214,13 +331,6 @@ Page({
     })
   },
 
-  //同意相关条例
-  bindAgreeChange: function (e) {
-    this.setData({
-      isAgree: !!e.detail.value.length,
-      showInput: !this.data.showInput
-    });
-  },
 
   //表单验证
   showTopTips: function () {
@@ -236,15 +346,12 @@ Page({
   },
   //提交表单
   submitForm: function (e) {
+    var wxReg = new RegExp("^[a-zA-Z]{1}[-_a-zA-Z0-9]{5,19}$");
+    var qqReg = new RegExp("[1-9][0-9]{4,}");
+    var phReg = new RegExp("0?(13|14|15|17|18|19)[0-9]{9}");
+    var nameReg = new RegExp("^[\u4e00-\u9fa5]{2,4}$");
+
     var that = this;
-   
-    if (that.data.showInput == false) {
-      wx.showModal({
-        title: '提示',
-        content: '请先阅读《发起须知》'
-      })
-      return;
-    }
     var title = e.detail.value.title;
     var endtime = this.data.date;
     var typeIndex = this.data.typeIndex;
@@ -255,11 +362,11 @@ Page({
     var latitude = this.data.latitude;//纬度
     var switchHide = e.detail.value.switchHide;
     var peoplenum = e.detail.value.peoplenum;
-    console.log(peoplenum);
     var content = e.detail.value.content;
     //------发布者真实信息------
     var realname = e.detail.value.realname;
     var contactindex = this.data.accountIndex;
+
     if (contactindex == 0) {
       var contactWay = "微信号";
     } else if (contactindex == 1) {
@@ -268,10 +375,7 @@ Page({
       var contactWay = "手机号";
     }
     var contactValue = e.detail.value.contactValue;
-    var wxReg = new RegExp("^[a-zA-Z]([-_a-zA-Z0-9]{5,19})+$");
-    var qqReg = new RegExp("[1-9][0-9]{4,}");
-    var phReg = /^1[34578]\d{9}$/;
-    var nameReg = new RegExp("^[\u4e00-\u9fa5]{2,4}$");
+
     //先进行表单非空验证
     if (title == "") {
       this.setData({
@@ -283,7 +387,7 @@ Page({
         showTopTips: true,
         TopTips: '请选择地点'
       });
-    } else if (switchHide == true && peoplenum == "") {
+    } else if (switchHide == true && peoplenum == undefined) {
       this.setData({
         showTopTips: true,
         TopTips: '请输入人数'
@@ -293,7 +397,7 @@ Page({
         showTopTips: true,
         TopTips: '请输入活动内容'
       });
-    }else if (realname == "") {
+    } else if (realname == "") {
       this.setData({
         showTopTips: true,
         TopTips: '请输入真实姓名'
@@ -324,127 +428,113 @@ Page({
         TopTips: 'QQ号格式不正确'
       });
     } else {
-      console.log('校验完毕');
       that.setData({
         isLoading: true,
         isdisabled: true
       })
-      //向 Events 表中新增一条数据
+
+      //修改Events 表中的数据
       wx.getStorage({
         key: 'user_id',
         success: function (ress) {
           var Diary = Bmob.Object.extend("Events");
-          var diary = new Diary();
-          var me = new Bmob.User();
-          me.id = ress.data;
-          diary.set("title", title);
-          diary.set("endtime", endtime);
-          diary.set("acttype", acttype + "");
-          diary.set("isShow",1);
-          diary.set("address", address);
-          diary.set("longitude", longitude);//经度
-          diary.set("latitude", latitude);//纬度\
-          if (that.data.peopleHide) { //如果设置了人数
-            diary.set("peoplenum", peoplenum);
-          } else if (!that.data.peopleHide) {
-            diary.set("peoplenum", "-1");
-          }
-          diary.set("content", content);
-          diary.set("publisher", me);
-          diary.set("likenum", 0);
-          diary.set("commentnum", 0);
-          diary.set("liker", []);
-          diary.set("joinnumber", 0); //发布后初始加入人数为0
-          diary.set("joinArray", []);
-          if (that.data.isSrc == true) {
-            var name = that.data.src; //上传图片的别名
-            var file = new Bmob.File(name, that.data.src);
-            file.save();
-            diary.set("actpic", file);
-          }
-          //新增操作
-          diary.save(null, {
+          var query = new Bmob.Query(Diary);
+          query.get(optionId, {
             success: function (result) {
-              //活动扩展表中添加一条记录
-              var Diary = Bmob.Object.extend("EventMore");
-              var query = new Diary();
-              var Events = Bmob.Object.extend("Events");
-              var event = new Events();
-              event.id = result.id;
-              query.set("Status", 0);
-              query.set("Statusname", "准备中");
-              query.set("event", event);
-              //如果上传了群二维码
-              if (that.data.isCodeSrc == true) {
-                var name = that.data.codeSrc; //上传图片的别名
-                var file = new Bmob.File(name, that.data.codeSrc);
-                file.save();
-                query.set("qrcode", file);
+              result.set("title", title);
+              result.set("endtime", endtime);
+              result.set("acttype", acttype + "");
+              if (that.data.upadnew) { //如果改变了地点
+                result.set("address", address);
+                result.set("longitude", longitude);//经度
+                result.set("latitude", latitude);//纬度
               }
-              query.save();
-
-              //再将发布者的信息添加到联系表中
-              wx.getStorage({
-                key: 'user_id',
-                success: function (ress) {
+              if (that.data.peopleHide) { //如果设置了人数
+                console.log(peoplenum);
+                result.set("peoplenum", peoplenum);
+              } else if (!that.data.peopleHide) {
+                result.set("peoplenum", "-1");
+              }
+              result.set("content", content);
+              if (that.data.upnew == true) { //如果更新了活动图片
+                if (that.data.actUrl != null) { //如果已经上传过活动图片
+                  var s = new Bmob.Files.del(that.data.actUrl).then(function (res) {
+                    if (res.msg == "ok") {
+                      console.log('删除旧活动图片成功');
+                    }
+                  },
+                    function (error) {
+                      console.log('删除旧活动图片失败');
+                      console.log(error)
+                    });
+                }
+                var name = that.data.src; //上传图片的别名
+                var file = new Bmob.File(name, that.data.src);
+                file.save();
+                result.set("actpic", file);
+              }
+              //修改操作
+              result.save(null, {
+                success: function (result) {
+                  //再将发布者的信息更新到联系表中
                   var Contacts = Bmob.Object.extend("Contacts");
-                  var contact = new Contacts();
-                  var Events = Bmob.Object.extend("Events");
-                  var event = new Events();
-                  event.id = result.id;
-                  var me = new Bmob.User();
-                  me.id = ress.data;
-                  contact.set("publisher", me); //发布人是自己
-                  contact.set("currentUser", me); //参加的人也是自己
-                  contact.set("event", event);
-                  contact.set("realname", realname);
-                  contact.set("contactWay", contactWay);
-                  contact.set("contactValue", contactValue);
-                  contact.save();
+                  var contact = new Bmob.Query("Contacts");
+                  contact.get(contactId, {
+                    success: function (result) {
+                      result.set("realname", realname);
+                      result.set("contactWay", contactWay);
+                      result.set("contactValue", contactValue);
+                      result.save();
+                    },
+                  });
+                  //更新群二维码
+                  console.log("that.data.upqrnew=" + that.data.upqrnew);
+                  if (that.data.upqrnew == true) { //如果更新了活动图片
+                    if (that.data.QrUrl != null) {
+                      var s = new Bmob.Files.del(that.data.QrUrl).then(function (res) {
+                        if (res.msg == "ok") {
+                          console.log('删除旧群二维码成功');
+                        }
+                      },
+                        function (error) {
+                          console.log('删除旧群二维码失败');
+                          console.log(error)
+                        });
+                    }
+                    var name = that.data.codeSrc; //上传图片的别名
+                    var file = new Bmob.File(name, that.data.codeSrc);
+                    file.save();
+                    var Diary = Bmob.Object.extend("EventMore");
+                    var query = new Bmob.Query(Diary);
+                    query.get(eventMoreId, {
+                      success: function (result) {
+                        result.set("qrcode", file);
+                        result.save();
+                      },
+                    });
+                  }
+
+                  console.log("修改成功,objectId:" + result.id);
+                  that.setData({
+                    isLoading: false,
+                    isdisabled: false,
+                    eventId: result.id,
+                  })
+                  //添加成功，返回成功之后的objectId(注意，返回的属性名字是id,而不是objectId)
+                  common.dataLoading("修改成功", "success", function () {
+                    wx.navigateBack({
+                      delta: 1
+                    })
+                  });
                 },
-              })
-
-              console.log("发布成功,objectId:" + result.id);
-              that.setData({
-                isLoading: false,
-                isdisabled: false,
-                eventId: result.id,
-              })
-              //添加成功，返回成功之后的objectId(注意，返回的属性名字是id,而不是objectId)
-              common.dataLoading("发起成功", "success", function () {
-                //重置表单
-                that.setData({
-                  title: '',
-                  typeIndex: 0,
-                  address: '点击选择位置',
-                  longitude: 0, //经度
-                  latitude: 0,//纬度
-                  data: formate_data(myDate),
-                  isHide: true,
-                  peoplenum: 0,
-                  peopleHide: false,
-                  isAgree: false,
-                  accountIndex: 0,
-                  realname: "",
-                  content: "",
-                  contactValue: '',
-                  noteNowLen: 0,
-                  showInput: false,
-                  src: "",
-                  isSrc: false,
-                  codeSrc: "",
-                  isCodeSrc: false
-
-                })
-              });
-            },
-            error: function (result, error) {
-              //添加失败
-              console.log("发布失败=" + error);
-              common.dataLoading("发起失败", "loading");
-              that.setData({
-                isLoading: false,
-                isdisabled: false
+                error: function (result, error) {
+                  //添加失败
+                  console.log("修改失败=" + error);
+                  that.setData({
+                    isLoading: false,
+                    isdisabled: false
+                  })
+                }
               })
             }
           })
@@ -491,9 +581,22 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  //查看发起大图
+  seeActBig: function (e) {
+    wx.previewImage({
+      current: that.data.src, // 当前显示图片的http链接
+      urls: [that.data.src] // 需要预览的图片http链接列表
+    })
+  },
+  //查看二维码大图
+  seeqrCodeBig: function (e) {
+    wx.previewImage({
+      current: that.data.codeSrc, // 当前显示图片的http链接
+      urls: [that.data.codeSrc] // 需要预览的图片http链接列表
+    })
+  },
 })
-
 //根据活动类型获取活动类型名称
 function getTypeName(acttype) {
   var acttypeName = "";
@@ -507,4 +610,12 @@ function getTypeName(acttype) {
   else if (acttype == 8) acttypeName = "音乐";
   else if (acttype == 9) acttypeName = "其他";
   return acttypeName;
+}
+//根据联系方式确定序号
+function getContactIndex(name) {
+  var accountIndex = 0;
+  if (name == "微信号") accountIndex = 0;
+  else if (name == "QQ号") accountIndex = 1;
+  else if (name == "手机号") accountIndex = 2;
+  return accountIndex;
 }

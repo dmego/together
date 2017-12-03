@@ -102,7 +102,7 @@ Page({
           if (actpic) {
             _url = results[i].get("actpic").url;
           } else {
-            _url = "/static/images/default.png";
+            _url = "http://bmob-cdn-14867.b0.upaiyun.com/2017/12/01/89a6eba340008dce801381c4550787e4.png";
           }
           var jsonA;
           jsonA = {

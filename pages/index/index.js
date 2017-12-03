@@ -73,8 +73,8 @@ Page({
 
   onLoad(t) {
     var self = this;
-    this.getAll();
-    this.fetchTopThreePosts(); //获取轮播图的3篇文章
+    //this.getAll();
+    //this.fetchTopThreePosts(); //获取轮播图的3篇文章
     try {
       let res = wx.getSystemInfoSync()
       this.windowWidth = res.windowWidth;
@@ -84,6 +84,29 @@ Page({
       this.setData({ ui: this.data.ui })
     } catch (e) {
     }
+  },
+
+  onShow: function (e) {
+    this.getAll();
+    this.fetchTopThreePosts(); //获取轮播图的3篇文章
+    //this.onLoad();
+    console.log('加载头像')
+    var that = this
+   
+    app.getUserInfo(function (userInfo) {
+      that.setData({
+        userInfo: userInfo
+      })
+    })
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          windowHeight1: res.windowHeight,
+          windowWidth1: res.windowWidth,
+          autoplay: true
+        })
+      }
+    })
   },
 
   //数据存储
@@ -103,6 +126,7 @@ Page({
     self = this;
     var Diary = Bmob.Object.extend("Events");
     var query = new Bmob.Query(Diary);
+    query.equalTo("isShow",1); //只统计公开显示的活动
     query.count({
       success: function (count) {
         var totalPage = 0;
@@ -135,6 +159,7 @@ Page({
     var molist = new Array();
     var Diary = Bmob.Object.extend("Events");
     var query = new Bmob.Query(Diary);
+    query.equalTo("isShow", 1); //公开显示的
     query.descending("likenum");
     query.include("publisher");
     query.limit(3);
@@ -145,6 +170,7 @@ Page({
           var title = results[i].get("title");
           var content = results[i].get("content");
           var acttype = results[i].get("acttype");
+          var isShow = results[i].get("isShow");
           var endtime = results[i].get("endtime");
           var address = results[i].get("address");
           var addressdetail = results[i].get("addressdetail");
@@ -162,7 +188,7 @@ Page({
           if(actpic){
             _url = results[i].get("actpic")._url;
           }else {
-            _url = "/static/images/default.png";
+            _url = "http://bmob-cdn-14867.b0.upaiyun.com/2017/12/01/89a6eba340008dce801381c4550787e4.png";
           }
           var publisherName = results[i].get("publisher").nickname;
           var publisherPic = results[i].get("publisher").userPic;
@@ -171,6 +197,7 @@ Page({
             "title": title || '',
             "content": content || '',
             "acttype": acttype || '',
+            "isShow": isShow,
             "endtime": endtime || '',
             "address": address || '',
             "addressdetail": addressdetail || '',
@@ -205,15 +232,12 @@ Page({
     var molist = new Array();
     var Diary = Bmob.Object.extend("Events");
     var query = new Bmob.Query(Diary);
+    query.equalTo("isShow", 1); //公开显示的
     query.limit(self.data.limitPage);
     console.log(self.data.limitPage);
     query.skip( 3 * self.data.currentPage);
     query.descending("createdAt"); //按照时间降序
     query.include("publisher");
-    //条件查询
-    /*if (self.data.acttype != 0) {
-      query.equalTo("acttype", self.data.acttype);
-    }*/
     query.find({
       success: function (results) {
         for (var i = 0; i < results.length; i++) {
@@ -223,7 +247,8 @@ Page({
           var acttype = results[i].get("acttype");
           var endtime = results[i].get("endtime");
           var address = results[i].get("address");
-          var acttypename = results[i].get("acttypename");
+          var acttypename = getTypeName(acttype); //根据类型id获取类型名称
+          var isShow = results[i].get("isShow");
           var peoplenum = results[i].get("peoplenum");
           var likenum = results[i].get("likenum");
           var liker = results[i].get("liker");
@@ -237,7 +262,7 @@ Page({
           if (actpic) {
             _url = results[i].get("actpic")._url;
           } else {
-            _url = "/static/images/default.png";
+            _url = "http://bmob-cdn-14867.b0.upaiyun.com/2017/12/01/89a6eba340008dce801381c4550787e4.png";
           }
           var publisherName = results[i].get("publisher").nickname;
           var publisherPic = results[i].get("publisher").userPic;
@@ -247,6 +272,7 @@ Page({
             "content": content || '',
             "acttype": acttype || '',
             "acttypename": acttypename || '',
+            "isShow": isShow,
             "endtime": endtime || '',
             "address": address || '',
             "peoplenum": peoplenum || '',
@@ -306,25 +332,6 @@ Page({
   },
 
 
-  onShow: function (e) {
-    console.log('加载头像')
-    var that = this
-    app.getUserInfo(function (userInfo) {
-      that.setData({
-        userInfo: userInfo
-      })
-    })
-    wx.getSystemInfo({
-      success: (res) => {
-        this.setData({
-          windowHeight1: res.windowHeight,
-          windowWidth1: res.windowWidth,
-          autoplay:true
-        })
-      }
-    })
-  },
-
   //点击刷新
   refresh: function () {
     this.setData({
@@ -340,7 +347,7 @@ Page({
       windowHeight1: 0,
       windowWidth1: 0,
     })
-    this.onLoad();
+    this.onShow();
   },
  
   // 点击活动进入活动详情页面
@@ -510,3 +517,18 @@ Page({
     }
   },
 })
+
+//根据活动类型获取活动类型名称
+function getTypeName(acttype) {
+  var acttypeName = "";
+  if (acttype == 1) acttypeName = "运动";
+  else if (acttype == 2) acttypeName = "游戏";
+  else if (acttype == 3) acttypeName = "交友";
+  else if (acttype == 4) acttypeName = "旅行";
+  else if (acttype == 5) acttypeName = "读书";
+  else if (acttype == 6) acttypeName = "竞赛";
+  else if (acttype == 7) acttypeName = "电影";
+  else if (acttype == 8) acttypeName = "音乐";
+  else if (acttype == 9) acttypeName = "其他";
+  return acttypeName;
+}

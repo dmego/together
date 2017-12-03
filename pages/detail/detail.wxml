@@ -1,6 +1,6 @@
 <import src="../template/activity/act_comment.wxml" />
 <import src="../template/activity/applyed.wxml" />
-<import src="../template/toasts/toasts.wxml"  />
+<import src="../template/toasts/toasts.wxml" />
 <loading hidden="{{loading}}">页面加载中...</loading>
 <!--评论输入弹窗-->
 <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{TopTips}}</view>
@@ -14,17 +14,19 @@
 <!--pages/detail/detail.wxml-->
 <scroll-view scroll-y="true" class="all_scr" style="padding-bottom:112rpx;">
   <!--活动封面-->
-  <image wx:if="{{listPic}}" class="header_imgss" src="{{listPic}}" mode="aspectFill" bindtap='seeBig'></image>
+  <image wx:if="{{listPic}}" class="header_imgss" src="{{listPic}}" mode="aspectFill" bindtap='seeActBig'></image>
   <view class="detail_con">
     <!--活动title文字-->
-    <template is="actCode1" data="{{listPic,imageBytes,codeHehe}}"  />
+    <template is="actCode" data="{{listPic,imageBytes,codeHehe}}" />
     <view class="detail_title paddingLR">
-      <text>{{listTitle}}</text> 
-        <image catchtap="showQrcode" class="clubHome-qrcode" src="/static/images/more/ewm.png"/>    
+      <text>{{listTitle}}</text>
+      <image catchtap="showQrcode" class="clubHome-qrcode" src="/static/images/more/ewm.png" />
     </view>
     <!--发布者信息、发布时间、点赞量、评论量-->
     <view class="des_txt detail_msg">
-      <text>发起者: {{publisherName}}</text>
+      <view>
+        <text>发起者: {{publisherName}}</text>
+      </view>
       <view>
         <text style="margin-right:12px;"></text>
         <text style="margin-right:12px;">点赞量: {{agreeNum}}</text>
@@ -73,9 +75,17 @@
         <view wx:if="{{peoplenum > 0}}">
           <text>{{peoplenum}} 人</text>
         </view>
-        <view wx:if="{{peoplenum == undefined}}">
+        <view wx:if="{{peoplenum < 0}}">
           <text>不限</text>
         </view>
+      </view>
+      <view class="detail_lineh"></view>
+    </view>
+    <!--活动状态-->
+    <view class="detail_input">
+      <text class="des_txt detail_txt">发起状态</text>
+      <view class="detail_row_right">
+        <text class='statustag_{{actstatus}}'>{{statusname}}</text>
       </view>
     </view>
 
@@ -88,7 +98,7 @@
         <view class="detail-tabar-border {{status==0?'detail-tabar-bg':''}}"></view>
       </view>
       <view wx:if="{{join ==1 || join == 3}}" class="xiangqing" bindtap="changePage">
-        <text class="sort1" id="1">加入情况
+        <text class="sort1" id="1">联系
       </text>
         <view class="detail-tabar-border {{status==1?'detail-tabar-bg':''}}"></view>
       </view>
@@ -116,12 +126,10 @@
           </view>
         </view>
 
-
-
         <!--已加入title-->
         <view class="applyed_title paddingLR">
           <text class="applyed">{{joinnumber}}人加入</text>
-          <text class='surplus_apply' wx:if="{{peoplenum == undefined}}">人数不限</text>
+          <text class='surplus_apply' wx:if="{{peoplenum < 0}}">人数不限</text>
           <text class='surplus_apply' wx:elif="{{peoplenum-joinnumber <= 0}}">人满了</text>
           <text class='surplus_apply' wx:elif="{{peoplenum-joinnumber > 0 }}">剩余名额 : {{peoplenum-joinnumber}}</text>
         </view>
@@ -131,7 +139,7 @@
         <view wx:if="{{joinnumber > 0}}" wx:for="{{joinList}}" wx:key="apply">
           <template is="applyed" data="{{item}}" />
         </view>
-        <view class="comment-footer-txt">---无更多加入---</view>
+        <view class="comment-footer-txt" wx:if="{{joinnumber > 0}}">---无更多加入---</view>
 
         <!--评论title-->
         <view class="comment_title paddingLR">
@@ -144,11 +152,12 @@
         <view wx:if="{{ commNum > 0}}" wx:for="{{commentList}}" wx:key="comment">
           <template is="comment" data="{{item}}" />
         </view>
-        <view class="comment-footer-txt">---无更多评论---</view>
+
+        <view class="comment-footer-txt" wx:if="{{ commNum > 0}}" >---无更多评论---</view>
       </view>
     </view>
 
-    <!--报名详情page-->
+    <!--报名联系-->
     <view class="textarea" wx:if="{{status==1}}">
       <view>
         <view class="line1">
@@ -156,7 +165,8 @@
           <text>发布者信息</text>
         </view>
         <view style="border:1rpx solid rgb(229,229,229);margin-top:22rpx">
-          <view class="line4">
+          <template is="actmainLink" data="{{adminname,adcontactWay,linkmainHe,adcontactValue}}" />
+          <view class="line4" bindtap='showmainLink'>
             <view class="line2_item">
               <view>
                 <text class="t34rpx">真实姓名 : {{adminname}}</text>
@@ -168,14 +178,16 @@
           </view>
         </view>
       </view>
+
       <view>
         <view class="line1" wx:if="{{joinList.length > 0}}">
           <view class="heidian"></view>
           <text>加入者信息</text>
         </view>
         <view wx:for="{{joinList}}" wx:key="{{item.id}}">
+          <template is="actjoinLink" data="{{item}}" />
           <view style="border:1rpx solid rgb(229,229,229);margin-top:22rpx">
-            <view class="line2">
+            <view class="line2" bindtap='showjoinLink' data-id='{{item.id}}'>
               <view class="line2_item">
                 <view>
                   <text class="t34rpx">真实姓名 : {{item.realname}}</text>
@@ -198,9 +210,9 @@
   <view class="bottom-beta-box">
     <form bindtap="click_join" data-join="{{join}}" report-submit="true">
       <button class="textarea1_case_sign {{join == 0?'un-has':'has'}}" form-type="submit">
-        <view wx:if="{{join == 3}}" style="opacity:0.6">已经加入</view>
+        <view wx:if="{{join == 3}}">改变状态</view>
         <view wx:if="{{join != 3}}">
-          <view wx:if="{{peoplenum == undefined}}">
+          <view wx:if="{{peoplenum < 0}}">
             <view wx:if="{{join == 0}}">现在加入</view>
             <view wx:elif="{{join == 1}}">取消加入</view>
           </view>
@@ -211,23 +223,33 @@
           </view>
         </view>
       </button>
-
     </form>
     <form bindtap="click_favo" data-favo="{{favo}}" report-submit="true">
       <button class="textarea1_case_sign {{favo == 0?'un-has':'has'}}" form-type="submit">
         <view wx:if="{{favo == 0}}">立即收藏</view>
         <view wx:if="{{favo == 1}}">取消收藏</view>
-        <view wx:if="{{favo == 3}}" style="opacity:0.6">无法收藏</view>
+        <view wx:if="{{favo == 3}}">
+          <view wx:if="{{actstatus != 2 && isShow == 1}}">撤离首页</view>
+          <view wx:if="{{actstatus != 2 && isShow == 0}}">公开发起</view>
+          <view wx:if="{{actstatus == 2}}" style="opacity:0.6">公开发起</view>
+        </view>
       </button>
     </form>
+    <view wx:if="{{join == 1 || join == 3}}">
+      <button class="textarea1_case_sign2"></button>
+      <template is="actQrCode" data="{{qrcodeHe,qrcode}}" />
+      <import src="../../components/button/button.wxml" />
+      <template is="button" data="{{ ...$wux.button.br }}" />
+    </view>
   </view>
 </view>
+<!--//加入活动弹窗  -->
 <view class=" {{ showDialog ? 'dialog_show' : '' }}">
   <view class="dialog_mask" />
   <view class="dialog_container">
     <!--  //此区域为加入视图  -->
     <view class="addForm">
-      <form bindsubmit="joinSubmit" class="white"  report-submit="true">
+      <form bindsubmit="joinSubmit" class="white" report-submit="true">
         <input class="todoName" value="{{realname}}" name="realname" type="text" placeholder="真实姓名" placeholder-class="place" maxlength="9" />
         <view class="todoName">
           <view class="weui-cell weui-cell_select">
@@ -244,6 +266,62 @@
         <view class="formButton">
           <button class="textarea1_case_btn" type="primary" form-type="submit">加入</button>
           <button class="textarea1_case_btn" type="warn" bindtap="click_join">取消</button>
+        </view>
+      </form>
+    </view>
+  </view>
+</view>
+<!--修改联系信息 -->
+<view class=" {{ showUpdDialog ? 'dialog_show' : '' }}">
+  <view class="dialog_mask" />
+  <view class="dialog_container">
+    <!--  //此区域为加入视图  -->
+    <view class="addForm">
+      <form bindsubmit="updSubmit" class="white" report-submit="true">
+        <input class="todoName" value="{{joinname}}" name="joinname" type="text" placeholder="真实姓名" placeholder-class="place" maxlength="9" />
+        <view class="todoName">
+          <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd" style="width: 90px">
+              <picker bindchange="updjoinChange" value="{{jocountIndex}}" range="{{accounts}}">
+                <view class="weui-select">{{accounts[jocountIndex]}}</view>
+              </picker>
+            </view>
+            <view class="weui-cell__bd weui-cell__bd_in-select-before">
+              <input class="weui-input" value="{{jocontactValue}}" name="jocontactValue" type="text" placeholder="请输入号码" />
+            </view>
+          </view>
+        </view>
+        <view class="formButton">
+          <button class="textarea1_case_btn" type="primary" form-type="submit">修改</button>
+          <button class="textarea1_case_btn" type="warn" bindtap="closeUpdJoin">取消</button>
+        </view>
+      </form>
+    </view>
+  </view>
+</view>
+
+<!--改变活动状态 -->
+<view class=" {{ showStuDialog ? 'dialog_show' : '' }}">
+  <view class="dialog_mask" />
+  <view class="dialog_container">
+    <!--  //此区域为加入视图  -->
+    <view class="addForm2">
+      <form bindsubmit="stuSubmit" class="white" report-submit="true">
+        <view class="todoName">
+          <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__bd weui-cell__bd_in-select-before">
+              <view class="weui-input">发起状态</view>
+            </view>
+            <view class="weui-cell__hd" style="width: 120px">
+              <picker bindchange="changeStatus" value="{{statusIndex}}" range="{{actStatusArray}}">
+                <view class="change-select">{{actStatusArray[statusIndex]}}</view>
+              </picker>
+            </view>
+          </view>
+        </view>
+        <view class="formButton">
+          <button class="textarea1_case_btn" type="primary" form-type="submit">确定</button>
+          <button class="textarea1_case_btn" type="warn" bindtap="closeChange">取消</button>
         </view>
       </form>
     </view>

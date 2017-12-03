@@ -9,6 +9,7 @@
     "pages/showinmap/showinmap",
     "pages/message/message",
     "pages/logs/logs",
+    "pages/updAct/updAct",
     "pages/my/projectbrief/projectbrief",
     "pages/my/aboutus/aboutus",
     "pages/my/myjoin/myjoin",

@@ -1,22 +1,47 @@
 <!--template/toasts/toasts.wxml-->
 <!--显示弹框，要把div的css设置为opacity:1;pointer-events:auto;-->
-<!--活动二维码弹框-->
-<template name="actCode">
-  <view class="code-succeed" wx:if="{{codeHehe}}" style="opacity:1;pointer-events:auto;">
+<!--联系人信息弹框-->
+<template name="actmainLink">
+  <view class="code-succeed" wx:if="{{linkmainHe}}" style="opacity:1;pointer-events:auto;">
     <view class="code-succeed-toast code-club-position">
-      <image src="https://cdn.51julebu.com/xiaochengxu/image/close1@2x.png" class="code-close" bindtap="closeCode"></image>
-      <view class="activity-code-txt">分享活动二维码,用微信扫一扫即可参加活动</view>
-      <image mode="widthFix" class="activity-code-img" src="data:image/png;base64,{{imageBytes}}"></image>
-      <view class="activity-code-title">{{listTitle}}</view>
+      <image src="/static/images/close1@2x.png" class="code-close" bindtap="closemainLink"></image>
+      <view class="activity-link-theme">您可以通过{{adcontactWay}}与{{adminname}}取得联系</view>
+      <view class='activity-flex-wap'>
+        <image wx:if="{{adcontactWay=='微信号'}}" mode="widthFix" class="activity-link-img" src="/static/images/icon/wx.png"></image>
+         <image wx:if="{{adcontactWay=='手机号'}}" mode="widthFix" class="activity-link-img" src="/static/images/icon/phone.png"></image>
+          <image wx:if="{{adcontactWay=='QQ号'}}" mode="widthFix" class="activity-link-img" src="/static/images/icon/qq.png"></image>
+        <view class="activity-link-txt">{{adcontactValue}}</view>
+      </view>
+      <view class='activity-link-btn'>
+        <view class='activity-link-button' bindtap='copyLink' data-value='{{adcontactValue}}'>复制Ta的{{adcontactWay}}</view>
+      </view>
+    </view>
+  </view>
+</template>
+<!--加入人信息弹框-->
+<template name="actjoinLink">
+  <view class="code-succeed" wx:if="{{item.linkjoinHe}}" style="opacity:1;pointer-events:auto;">
+    <view class="code-succeed-toast code-club-position">
+      <image src="/static/images/close1@2x.png" class="code-close" bindtap="closejoinLink"></image>
+      <view class="activity-link-theme">您可以通过{{item.contactWay}}与{{item.realname}}取得联系</view>
+      <view class='activity-flex-wap'>
+        <image wx:if="{{item.contactWay=='微信号'}}" mode="widthFix" class="activity-link-img" src="/static/images/icon/wx.png"></image>
+         <image wx:if="{{item.contactWay=='手机号'}}" mode="widthFix" class="activity-link-img" src="/static/images/icon/phone.png"></image>
+          <image wx:if="{{item.contactWay=='QQ号'}}" mode="widthFix" class="activity-link-img" src="/static/images/icon/qq.png"></image>
+        <view class="activity-link-txt">{{item.contactValue}}</view>
+      </view>
+      <view class='activity-link-btn'>
+        <view class='activity-link-button' bindtap='copyLink' data-value='{{item.contactValue}}'>复制Ta的{{item.contactWay}}</view>
+      </view>
     </view>
   </view>
 </template>
 
-<!--二维码弹框-->
-<template name="actCode1">
+<!--活动二维码弹框-->
+<template name="actCode">
   <view class="code-succeed" wx:if="{{codeHehe}}" style="opacity:1;pointer-events:auto;">
     <view class="code-succeed-toast">
-      <image src="https://cdn.51julebu.com/xiaochengxu/image/close1@2x.png" class="code-close" bindtap="closeCode"></image>
+      <image src="/static/images/close1@2x.png" class="code-close" bindtap="closeCode"></image>
       <view class="code-club-content">
         <view class="code-club-theme">邀请好友加入活动</view>
         <view class="text-center text-space">方式一：点击右上角【...】－【分享】发送给好友，点击即可查看活动详情</view>
@@ -31,4 +56,19 @@
   </view>
 </template>
 
-
+<!--活动群二维码弹框-->
+<template name="actQrCode">
+  <view class="code-succeed" wx:if="{{qrcodeHe}}" style="opacity:1;pointer-events:auto;">
+    <view class="code-succeed-toast">
+      <image src="/static/images/close1@2x.png" class="code-close" bindtap="closeqrcode"></image>
+      <view class="code-club-content">
+        <view class="code-club-theme">进入该发起的群聊</view>
+        <view class="text-space">由发起者创建，方便于大家的交流</view>
+        <view class="text-space">请点击二维码查看大图，长按保存，扫一扫加入</view>
+      </view>
+      <view>
+        <image mode="widthFix" class="code-message-img" src="{{qrcode}}" bindtap='seeqrCodeBig'></image>
+      </view>
+    </view>
+  </view>
+</template>

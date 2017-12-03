@@ -76,11 +76,11 @@ Page({
     query.equalTo("currentUser", wx.getStorageSync("user_id")); //查询出联系表中是我的记录
     query.include("event");
     query.descending("createAt");
-    query.include("currentUser");
+    query.include("publisher");
     query.find({
       success: function (results) {
         for (var i = 0; i < results.length; i++) {
-          var publisherId = results[i].get("currentUser").objectId;
+          var publisherId = results[i].get("publisher").objectId;
           var title = results[i].get("event").title;
           var content = results[i].get("event").content;
           var acttype = results[i].get("event").acttype;
@@ -95,14 +95,14 @@ Page({
           var id = results[i].get("event").objectId;
           var createdAt = results[i].createdAt;
           var pubtime = util.getDateDiff(createdAt);
-          var publisherName = results[i].get("currentUser").nickname;
-          var publisherPic = results[i].get("currentUser").userPic;
+          var publisherName = results[i].get("publisher").nickname;
+          var publisherPic = results[i].get("publisher").userPic;
           var _url
           var actpic = results[i].get("event").actpic;
           if (actpic) {
             _url = results[i].get("event").actpic.url;
           } else {
-            _url = "/static/images/default.png";
+            _url = "http://bmob-cdn-14867.b0.upaiyun.com/2017/12/01/89a6eba340008dce801381c4550787e4.png";
           }
           var jsonA;
           jsonA = {

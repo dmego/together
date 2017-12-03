@@ -47,6 +47,7 @@ Page({
     var molist = new Array();
     var Diary = Bmob.Object.extend("Events");
     var query = new Bmob.Query(Diary);
+    query.equalTo("isShow", 1); //只统计公开显示的活动
     query.descending("createdAt");
     query.include("publisher");
     // 查询所有数据
@@ -57,9 +58,10 @@ Page({
           var title = results[i].get("title");
           var content = results[i].get("content");
           var acttype = results[i].get("acttype");
+          var isShow = results[i].get("isShow");
           var endtime = results[i].get("endtime");
           var address = results[i].get("address");
-          var acttypename = results[i].get("acttypename");
+          var acttypename = getTypeName(acttype);
           var peoplenum = results[i].get("peoplenum");
           var likenum = results[i].get("likenum");
           var liker = results[i].get("liker");
@@ -73,7 +75,7 @@ Page({
           if (actpic) {
             _url = results[i].get("actpic")._url;
           } else {
-            _url = "/static/images/default.webp";
+            _url = "http://bmob-cdn-14867.b0.upaiyun.com/2017/12/01/89a6eba340008dce801381c4550787e4.png";
           }
           var publisherName = results[i].get("publisher").nickname;
           var publisherPic = results[i].get("publisher").userPic;
@@ -82,6 +84,7 @@ Page({
             "title": title || '',
             "content": content || '',
             "acttype": acttype || '',
+            "isShow": isShow,
             "acttypename": acttypename || '',
             "endtime": endtime || '',
             "address": address || '',
@@ -213,3 +216,18 @@ Page({
     WxSearch.wxSearchHiddenPancel(that);
   }
 })
+
+//根据活动类型获取活动类型名称
+function getTypeName(acttype) {
+  var acttypeName = "";
+  if (acttype == 1) acttypeName = "运动";
+  else if (acttype == 2) acttypeName = "游戏";
+  else if (acttype == 3) acttypeName = "交友";
+  else if (acttype == 4) acttypeName = "旅行";
+  else if (acttype == 5) acttypeName = "读书";
+  else if (acttype == 6) acttypeName = "竞赛";
+  else if (acttype == 7) acttypeName = "电影";
+  else if (acttype == 8) acttypeName = "音乐";
+  else if (acttype == 9) acttypeName = "其他";
+  return acttypeName;
+}

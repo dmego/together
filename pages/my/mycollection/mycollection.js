@@ -16,20 +16,16 @@ Page({
 
   onLoad() {
     var self = this;
-    this.getAll();
-    this.fetchPostsData();
   },
 
   //数据存储
   onSetData: function (data) {
-    console.log(data.length);
     let page = this.data.currentPage + 1;
     //设置数据
     data = data || [];
     this.setData({
       postsList: page === 1 || page === undefined ? data : this.data.postsList.concat(data),
     });
-    console.log(this.data.postsList, page);
   },
 
   //获取总的收藏数
@@ -54,6 +50,11 @@ Page({
           endPage: endPage,
           totalPage: totalPage
         })
+        if (self.data.currentPage + 1 == self.data.totalPage) {
+          self.setData({
+            isEmpty: true
+          })
+        }
         console.log("共有" + count + " 条记录");
         console.log("共有" + totalPage + "页");
         console.log("最后一页加载" + endPage + "条");
@@ -78,7 +79,7 @@ Page({
     query.find({
       success: function (results) {
         for (var i = 0; i < results.length; i++) {
-          var publisherId = results[i].get("favor").objectId;
+          var publisherId = results[i].get("event").publisher.objectId;
           var title = results[i].get("event").title;
           var content = results[i].get("event").content;
           var acttype = results[i].get("event").acttype;
@@ -100,7 +101,7 @@ Page({
           if (actpic) {
             _url = results[i].get("event").actpic.url;
           } else {
-            _url = "/static/images/default.png";
+            _url = "http://bmob-cdn-14867.b0.upaiyun.com/2017/12/01/89a6eba340008dce801381c4550787e4.png";
           }
           var jsonA;
           jsonA = {
@@ -167,7 +168,8 @@ Page({
   },
 
   onShow: function () {
-
+    this.getAll();
+    this.fetchPostsData();
   },
 
   // 点击活动进入活动详情页面
