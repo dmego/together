@@ -52,6 +52,7 @@ Page({
     //----------------------------------
     index: 2,
     opened: !1,
+    style_img: ''
   },
 
   //生成活动二维码
@@ -192,7 +193,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
     var myInterval = setInterval(getReturn, 500);//半秒定时查询
     function getReturn() {
       wx.getStorage({
@@ -552,6 +552,14 @@ Page({
 
   //点赞处理
   changeLike: function (event) {
+    that.setData({
+      style_img: 'transform:scale(1.5);'
+    })
+    setTimeout(function () {
+      that.setData({
+        style_img: 'transform:scale(1);'
+      })
+    }, 500)
     var isZan = false;
     var isLike = that.data.agree;
     var likeNum = parseInt(this.data.agreeNum);
@@ -600,54 +608,70 @@ Page({
               result[0].set('likenum', result[0].get('likenum') + 1);
             }
             result[0].save();
-            //点赞或者取消赞之后生成消息存在表中，默认未未读
+
+            //在生成消息之前，先遍历消息表，如果要生成的消息在表中已经存在，则不生成消息
+            var plyerQuery = Bmob.Object.extend("Plyre");
+            var plyerQuery = new Bmob.Query(plyerQuery);
             var isme = new Bmob.User();
             isme.id = ress.data;
-            var value = wx.getStorageSync("my_avatar")
-            var my_username = wx.getStorageSync("my_username")
-
-            var Plyre = Bmob.Object.extend("Plyre");
-            var plyre = new Plyre();
-            console.log("isZan=" + isZan);
-            if (!isZan) {//如果是点赞，则消息通知行为存1(之前没有赞过)
-              plyre.set("behavior", 1); //消息通知方式
-              plyre.set("noticetype", "点赞");
-            } else {//如果是取消赞，消息通知行为存2
-              plyre.set("behavior", 2); //消息通知方式
-              plyre.set("noticetype", "取消赞");
-            }
-            plyre.set("bigtype", 1)//动态大类,消息类
-            plyre.set("avatar", value); //我的头像
-            plyre.set("username", my_username); // 我的名称
-            plyre.set("uid", isme);
-            plyre.set("wid", optionId); //活动ID
-            plyre.set("fid", publisherId); //
-            plyre.set("is_read", 0); //是否已读,0代表没有,1代表读了
-
-            //添加数据
-            plyre.save(null, {
-              success: function (result) {
-                //添加成功
-                console.log("isZan2=" + isZan);
-                if (isZan) {
-                  common.dataLoading("取消赞成功", "success");
-                } else {
-                  common.dataLoading("点赞成功", "success");
+            if (!isZan) {//如果是点赞，查询是否存在点赞记录
+              plyerQuery.equalTo("uid", isme);
+              plyerQuery.equalTo("wid", optionId);
+              plyerQuery.equalTo("behavior", 1);
+              plyerQuery.find({
+                success: function (result) {
+                  console.log(result)
+                  if (result.length == 0) { //如果消息表中不存在该条消息，则生成新消息
+                    var value = wx.getStorageSync("my_avatar")
+                    var my_username = wx.getStorageSync("my_username")
+                    var Plyre = Bmob.Object.extend("Plyre");
+                    var plyre = new Plyre();
+                    plyre.set("behavior", 1); //消息通知方式
+                    plyre.set("noticetype", "点赞");
+                    plyre.set("bigtype", 1)//动态大类,消息类
+                    plyre.set("avatar", value); //我的头像
+                    plyre.set("username", my_username); // 我的名称
+                    plyre.set("uid", isme);
+                    plyre.set("wid", optionId); //活动ID
+                    plyre.set("fid", publisherId); //
+                    plyre.set("is_read", 0); //是否已读,0代表没有,1代表读了
+                    plyre.save();
+                  }
                 }
-                console.log("赞/取消赞成功");
-              },
-              error: function (result, error) {
-                console.log("赞/取消赞失败");
-                console.log(error);
-              }
-            });
-            that.onShow();
+              })
+            } else { //如果是取消赞，查询是否存在点赞记录
+              plyerQuery.equalTo("uid", isme);
+              plyerQuery.equalTo("wid", optionId);
+              plyerQuery.equalTo("behavior", 2);
+              plyerQuery.find({
+                success: function (result) {
+                  console.log(result)
+                  if (result.length == 0) { //如果消息表中不存在该条消息，则生成新消息
+                    var value = wx.getStorageSync("my_avatar")
+                    var my_username = wx.getStorageSync("my_username")
+                    var Plyre = Bmob.Object.extend("Plyre");
+                    var plyre = new Plyre();                                     
+                    plyre.set("behavior", 2); //消息通知方式
+                    plyre.set("noticetype", "取消赞");
+                    plyre.set("bigtype", 1)//动态大类,消息类
+                    plyre.set("avatar", value); //我的头像
+                    plyre.set("username", my_username); // 我的名称
+                    plyre.set("uid", isme);
+                    plyre.set("wid", optionId); //活动ID
+                    plyre.set("fid", publisherId); //
+                    plyre.set("is_read", 0); //是否已读,0代表没有,1代表读了
+                    plyre.save();
+                  }
+                }
+              })
+            }
           },
           error: function (error) {
             console.log("赞/取消赞失败");
             console.log(error)
           }
         });
+        that.onShow();
       },
     })
   },
@@ -1016,6 +1040,9 @@ Page({
         showCancel: true,
         success: function (res) {
           if (res.confirm) {//如果点击确认
+            that.setData({ 
+              status: 0
+            });
             //先删除联系表里的数据
             wx.getStorage({
               key: 'user_id',
