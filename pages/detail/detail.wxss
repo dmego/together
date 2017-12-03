@@ -784,6 +784,14 @@ float: right;
   text-align: center;
   margin-right: 35rpx;
   margin-top: 8rpx;
+   transform: scale(1);
+  -webkit-transform: scale(1);
+  -webkit-transition:ease all;
+  -moz-transition:ease all;
+  transition:ease all;
+  -webkit-transition-duration:700ms;
+  -moz-transition-duration:700ms;
+  transition-duration:700ms;
 }
 
 .gravatarLikeImg {

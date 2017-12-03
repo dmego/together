@@ -19,7 +19,7 @@
     <view class="log-list">
       <view class="describe">
         <view class="desc-title">
-          <text class="desc-v">v2.2.0 公测版</text>
+          <text class="desc-v">v2.2.4 公测版</text>
           <text class="desc-time">2017.12.03</text>
         </view>
         <text class="desc-content">修复BUG</text>
@@ -35,6 +35,8 @@
           <text class="desc-list-item">优化了微信号，手机号，QQ号以及真实姓名的校验</text>
           <text class="desc-list-item">添加修改发起状态功能</text>
           <text class="desc-list-item">添加发起撤离首页和公开发起功能</text>
+          <text class="desc-list-item">删除点赞与取消赞的提示消息，换成动画效果</text>
+          <text class="desc-list-item">优化动态消息提示机制</text>
         </view>
       </view>
       <view class="describe">

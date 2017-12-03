@@ -116,7 +116,7 @@
         <view class="likePost">
           <view class="comment_title paddingLR">
             <text class="comment_text">{{agreeNum}}人已赞</text>
-            <image src="/static/images/like{{agree?'-on':''}}.png" class="img-like" id="liketop" bindtap="changeLike" data-liked="{{agree}}"></image>
+            <image src="/static/images/like{{agree?'-on':''}}.png" class="img-like" id="liketop" bindtap="changeLike" data-liked="{{agree}}" style="{{style_img}}"></image>
           </view>
           <view wx:if="{{!(likerList.length>0)}}" class="comment-footer-txt">暂无人点赞</view>
           <view class="likeText">

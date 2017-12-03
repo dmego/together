@@ -5,7 +5,7 @@ var common = require("utils/common.js");
 const __utils = require('utils/util')
 Bmob.initialize("9f1068e931203bfa908f26353f9d8080", "396e699e6cda7e452ef36e9effe5ef35");
 App({
-  version: 'v2.2.0', //版本号
+  version: 'v2.2.4', //版本号
   onLaunch: function () {
     var that = this;
     //调用系统API获取设备的信息
