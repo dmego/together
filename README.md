@@ -2,7 +2,7 @@
 
 <img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/mjIhk6LFBE.png?imageslim" width="250px" />
 
-[![Build Status](https://travis-ci.org/dmego/together.svg)](https://travis-ci.org/dmego/together.github.io)
+[![Build Status](https://travis-ci.org/dmego/together.svg)](https://travis-ci.org/dmego/together)
 [![Website](https://img.shields.io/website-up-down-green-red/http/together.dmego.me.svg)](http://together.dmego.me/)
 [![License](https://img.shields.io/github/license/dmego/together.svg)](/LICENSE)
 [![Say Thanks](https://img.shields.io/badge/Say-Thanks!-1EAEDB.svg)](https://saythanks.io/to/dmego)
@@ -11,8 +11,8 @@
 [![Stargazers](https://img.shields.io/github/stars/dmego/together.svg?style=social&label=Star)](https://github.com/dmego/together/stargazers)
 [![Forks](https://img.shields.io/github/forks/dmego/together.svg?style=social&label=Fork)](https://github.com/dmego/together/network)
 
-[![Closed Issues](https://img.shields.io/github/issues-closed/dmego/together.github.io.svg)](https://github.com/dmego/together/issues)
-[![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/dmego/together.github.io.svg)](https://github.com/dmego/together/pulls)
+[![Closed Issues](https://img.shields.io/github/issues-closed/dmego/together.svg)](https://github.com/dmego/together/issues)
+[![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/dmego/together.svg)](https://github.com/dmego/together/pulls)
 
 “让兴趣不再孤单，让爱好不再流浪” 是微信小程序《出发吧一起》的主题，这款小程序旨在解决当代大学生在校园生活中的孤独感，让大家找到志同道合的朋友，在跑步、健身、竞赛等活动中找到伙伴。利用小程序即开即用，用完就走的特点与交友相结合，它将会是一款高效快捷、无负担的线下交友利器
 
