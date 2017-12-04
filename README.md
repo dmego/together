@@ -14,7 +14,7 @@
 [![Closed Issues](https://img.shields.io/github/issues-closed/dmego/together.github.io.svg)](https://github.com/dmego/together.github.io/issues)
 [![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/dmego/together.github.io.svg)](https://github.com/dmego/together.github.io/pulls)
 
-“让兴趣不再孤单，让爱好不再流浪” 是微信小程序《一起》的主题，这款小程序旨在解决当代大学生在校园生活中的孤独感，让大家找到志同道合的朋友，在跑步、健身、竞赛等活动中找到伙伴。利用小程序即开即用，用完就走的特点与交友相结合，它将会是一款高效快捷、无负担的线下交友利器
+“让兴趣不再孤单，让爱好不再流浪” 是微信小程序《出发吧一起》的主题，这款小程序旨在解决当代大学生在校园生活中的孤独感，让大家找到志同道合的朋友，在跑步、健身、竞赛等活动中找到伙伴。利用小程序即开即用，用完就走的特点与交友相结合，它将会是一款高效快捷、无负担的线下交友利器
 
 本小程序由 [bmob](https://www.bmob.cn/) 后端云提供数据处理与存储支持
 <center>
