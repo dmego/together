@@ -165,3 +165,7 @@
 #### 配置安全域名
 
 在你的微信小程序后台配置你的服务器域名,更为具体的配置请查看 [bmob 文档](https://docs.bmob.cn/data/wechatApp/a_faststart/doc/index.html)
+
+#### 反馈群：
+<img src="http://bmob-cdn-14867.b0.upaiyun.com/2017/12/02/b5e3c1ac40c22df4800e5ac40e4187b3.png" width="250" />
+
