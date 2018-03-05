@@ -5,6 +5,7 @@ Page({
   data: {
     remind: '加载中',
     angle: 0,
+    year: 2017,
     userInfo: {}
   },
   
@@ -14,7 +15,9 @@ Page({
     });
   },
   onLoad:function(){
-   
+    this.setData({
+      year: new Date().getFullYear()
+    });
   },
   onShow:function(){
     console.log('onLoad')

@@ -16,7 +16,7 @@
         <view class="confirm-btn" bindtap='goToIndex'>
           <text >立即体验</text>
         </view>
-        <text class="copyright">© 2017 石家庄铁道大学SmartCoder团队 倾情出品</text>
+        <text class="copyright">© {{year}} 石家庄铁道大学SmartCoder团队 倾情出品</text>
       </view>
     </view>
   </block>

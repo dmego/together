@@ -62,7 +62,6 @@ Page({
     var that = this
     that.mapCtx.getCenterLocation({
       success: function (res) {
-        //调试发现地图在滑动屏幕开始和结束的时候都会走这个方法,需要判断位置是否真的变化来判断是否刷新单车列表
         //经纬度保留6位小数
         var longitudeFix = res.longitude.toFixed(6)
         var latitudeFix = res.latitude.toFixed(6)
