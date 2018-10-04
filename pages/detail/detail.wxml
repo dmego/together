@@ -11,6 +11,7 @@
     <button catchtap="publishComment" class="dialog-content-btn">评论</button>
   </view>
 </view>
+
 <!--pages/detail/detail.wxml-->
 <scroll-view scroll-y="true" class="all_scr" style="padding-bottom:112rpx;">
   <!--活动封面-->

@@ -234,6 +234,7 @@ Page({
       });
     }, 3000);
   },
+  
   //提交表单
   submitForm: function (e) {
     var that = this;

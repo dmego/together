@@ -43,6 +43,7 @@ Page({
       clickable: false,
     }],
   },
+
   //点击定位到当前位置
   controltap(e) {
     var that = this
@@ -184,6 +185,7 @@ Page({
     }
     return markers;
   },
+  
   createMarker(point) {
     let marker = {
       iconPath: "/static/images/map4.png",

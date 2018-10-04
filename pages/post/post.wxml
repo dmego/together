@@ -32,7 +32,7 @@
       <!-- 有效时间 -->
       <view class="mod t-sign-time">
         <text class="key">有效时间</text>
-        <picker mode="date" value="{{date}}" start="{{date}}" end="2020-09-01" bindchange="bindDateChange">
+        <picker mode="date" value="{{date}}" start="{{date}}" end="2117-12-31" bindchange="bindDateChange">
           <view class="value" name="endtime">{{date}}
             <image class="arrow-r" src="/static/images/arrow-r-0.png"></image>
           </view>

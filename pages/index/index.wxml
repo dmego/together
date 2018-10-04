@@ -60,7 +60,7 @@
         <text class="location">活动地点：{{ item.address }}</text>
 
       </view>
-
+      
     </view>
     <view class="loadingmore">
       <view wx:if="{{!isEmpty}}">
