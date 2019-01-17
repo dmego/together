@@ -1,9 +1,10 @@
-# TOGETHER
+# <div align="center"><img align="center" width="250px" src="static/images/readme/logo.jpg"></div>
 
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/mjIhk6LFBE.png?imageslim" width="250px" />
+> TOGETHER **出发吧一起**
 
-[![Build Status](https://travis-ci.org/dmego/together.svg)](https://travis-ci.org/dmego/together)
-[![Website](https://img.shields.io/website-up-down-green-red/http/together.dmego.me.svg)](http://together.dmego.me/)
+[![Github](https://img.shields.io/badge/Author-Dmego-brightgreen.svg)](https://github.com/dmego)
+[![GitHub release](https://img.shields.io/github/release/dmego/together.svg)](https://github.com/dmego/together/releases)
+[![](https://img.shields.io/github/languages/code-size/dmego/together.svg)](https://github.com/dmego/together)
 [![License](https://img.shields.io/github/license/dmego/together.svg)](/LICENSE)
 [![Say Thanks](https://img.shields.io/badge/Say-Thanks!-1EAEDB.svg)](https://saythanks.io/to/dmego)
 
@@ -11,37 +12,31 @@
 [![Stargazers](https://img.shields.io/github/stars/dmego/together.svg?style=social&label=Star)](https://github.com/dmego/together/stargazers)
 [![Forks](https://img.shields.io/github/forks/dmego/together.svg?style=social&label=Fork)](https://github.com/dmego/together/network)
 
-[![Closed Issues](https://img.shields.io/github/issues-closed/dmego/together.svg)](https://github.com/dmego/together/issues)
-[![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/dmego/together.svg)](https://github.com/dmego/together/pulls)
+## 简介
 
-“让兴趣不再孤单，让爱好不再流浪” 是微信小程序《出发吧一起》的主题，这款小程序旨在解决当代大学生在校园生活中的孤独感，让大家找到志同道合的朋友，在跑步、健身、竞赛等活动中找到伙伴。利用小程序即开即用，用完就走的特点与交友相结合，它将会是一款高效快捷、无负担的线下交友利器
+>*让兴趣不再孤单，让爱好不再流浪*
 
-本小程序由 [bmob](https://www.bmob.cn/) 后端云提供数据处理与存储支持
+微信小程序《出发吧一起》，这款小程序旨在解决当代大学生在校园生活中的孤独感，让大家找到志同道合的朋友，在跑步、健身、竞赛等活动中找到伙伴。利用小程序即开即用，用完就走的特点与交友相结合，它将会是一款高效快捷、无负担的线下交友利器
 
-开发过程中的问题汇总请转到博客：[技术问题汇总](http://dmego.me/2017/12/04/wechat-app-together.html)
-
-<center>
-欢迎扫描体验
-<center>
-
-</center>
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/1fIA6jdFla.jpg?imageslim" width="250px" />
-</center>
-
-## 运行截图 & GIF
 <div align="center">
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/7AgDLKB4Jc.gif" width="250" />
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/EbIGLhEbA8.gif" width="250" />
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/93Cb3BEj9D.gif" width="250" />
-	
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/J3hJk2a7Gg.gif" width="250" />
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/7bJDCm0424.gif" width="250" />
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/6DmcGmKfBK.gif" width="250" />
+	<img src="static/images/readme/1.gif" width="250" />
+	<img src="static/images/readme/2.gif" width="250" />
+	<img src="static/images/readme/3.gif" width="250" />
+<div>
 
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/BgbjB83alh.gif" width="250" />
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/BH5fA5LF0J.gif" width="250" />
-<img src="http://ovasw3yf9.bkt.clouddn.com/blog/171203/391kI6DK0m.gif" width="250" />
+>本小程序由 [bmob](https://www.bmob.cn/) 后端云提供数据处理与存储支持
+
+>开发过程中的问题汇总请转到博客：[技术问题汇总](http://dmego.me/2017/12/04/wechat-app-together.html)
+<div align="center">
+	欢迎扫描体验
 </div>
+
+<div align="center">
+	<img src="static/images/readme/licon.jpg" width="250px"/>
+<div>
+
+
+>**注** 2019-1-16 起更新维护暂停访问
 
 ## Bmob 配置
 
@@ -167,5 +162,7 @@
 在你的微信小程序后台配置你的服务器域名,更为具体的配置请查看 [bmob 文档](https://docs.bmob.cn/data/wechatApp/a_faststart/doc/index.html)
 
 #### 反馈群：
-<img src="http://bmob-cdn-14867.b0.upaiyun.com/2017/12/02/b5e3c1ac40c22df4800e5ac40e4187b3.png" width="250" />
 
+<div align="center">
+<img src="static/images/readme/qq.png" width="250" />
+</div>
