@@ -22,7 +22,7 @@
 	<img src="static/images/readme/1.gif" width="250" />
 	<img src="static/images/readme/2.gif" width="250" />
 	<img src="static/images/readme/3.gif" width="250" />
-<div>
+</div>
 
 >本小程序由 [bmob](https://www.bmob.cn/) 后端云提供数据处理与存储支持
 
@@ -33,7 +33,7 @@
 
 <div align="center">
 	<img src="static/images/readme/licon.jpg" width="250px"/>
-<div>
+</div>
 
 
 >**注** 2019-1-16 起更新维护暂停访问
