@@ -1,3 +1,9 @@
+**注** 2019.1-17
+
+>主分支程序不可用，请下载 `Releases: 2.2.4-beta`
+>
+>线上版 2019-1-16 起更新维护暂停访问
+
 # <div align="center"><img align="center" width="250px" src="static/images/readme/logo.jpg"></div>
 
 > TOGETHER **出发吧一起**
@@ -30,13 +36,10 @@
 <div align="center">
 	欢迎扫描体验
 </div>
-
+>
 <div align="center">
 	<img src="static/images/readme/licon.jpg" width="250px"/>
 </div>
-
-
->**注** 2019-1-16 起更新维护暂停访问
 
 ## Bmob 配置
 
