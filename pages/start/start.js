@@ -5,29 +5,50 @@ Page({
   data: {
     remind: '加载中',
     angle: 0,
-    year: 2017,
-    userInfo: {}
+    year: 2019,
+    userInfo: {}, //用户信息
+    hasUserInfo: false //是否或取了用户信息
   },
   
+  //跳转到 tabBar 首页
   goToIndex:function(){
     wx.switchTab({
       url: '/pages/index/index',
     });
   },
-  onLoad:function(){
+
+  //获取用户信息
+  getUserInfo: function(e){
+    var that = this;
+    if(!that.data.hasUserInfo){ //如果没有获取用户信息,则获取
+      app.globalData.userInfo = e.detail.userInfo;
+      wx.Bmob.User.upInfo(e.detail.userInfo)
+      wx.setStorageSync("userInfo", e.detail.userInfo);
+      wx.setStorageSync("hasUserInfo", true);
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+      that.goToIndex();
+    }else{
+      that.goToIndex();
+    }
+  },
+
+  onLoad: function(){
+    var userInfo = wx.getStorageSync("userInfo");
+    var hasUserInfo = wx.getStorageSync("hasUserInfo");
     this.setData({
+      userInfo: userInfo,
+      hasUserInfo: hasUserInfo,
       year: new Date().getFullYear()
     });
   },
+
   onShow:function(){
-    console.log('onLoad')
-    var that = this
-    app.getUserInfo(function (userInfo) {
-      that.setData({
-        userInfo: userInfo
-      })
-    })
+    
   },
+
   onReady: function(){
     var _this = this;
     setTimeout(function(){
