@@ -4,7 +4,7 @@
     <image class="remind-img" src="/static/images/more/loading.gif"></image>
   </view>
   <block wx:else>
-    <image class="title" src="/static/images/more/title8.png"></image>
+    <image class="title" src="/static/images/more/title.png"></image>
     <view class="content">
       <view class="hd" style="transform:rotateZ({{angle}}deg);">
         <image class="logo" src="{{userInfo.avatarUrl}}"></image>
@@ -12,11 +12,11 @@
         <image class="wave wave-bg" src="/static/images/more/wave.png" mode="aspectFill"></image>
       </view>
       <view class="bd">
-         <image class="smalltitle" src="/static/images/more/confirm-word1.png"></image>
-        <view class="confirm-btn" bindtap='goToIndex'>
+         <image class="smalltitle" src="/static/images/more/confirm-word.png"></image>
+        <button  class="confirm-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
           <text >立即体验</text>
-        </view>
-        <text class="copyright">© {{year}} 石家庄铁道大学SmartCoder团队 倾情出品</text>
+        </button >
+        <text class="copyright">© {{year}} Powered By Dmego</text>
       </view>
     </view>
   </block>
