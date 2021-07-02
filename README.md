@@ -1,5 +1,6 @@
-**注** 2019-1-17
-
+**注** 2021-7-2
+>本项目已不再维护！！！
+>
 >主分支程序不可用，请下载 `Releases: 2.2.4-beta`
 >
 >线上版 2019-1-16 起更新维护暂停访问
@@ -164,8 +165,3 @@
 
 在你的微信小程序后台配置你的服务器域名,更为具体的配置请查看 [bmob 文档](https://docs.bmob.cn/data/wechatApp/a_faststart/doc/index.html)
 
-#### 反馈群：
-
-<div align="center">
-<img src="static/images/readme/qq.png" width="250" />
-</div>
